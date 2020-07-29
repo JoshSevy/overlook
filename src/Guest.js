@@ -6,6 +6,9 @@ class Guest {
 
   //extends from parent ?
   // what specific things does this class do that others dont
+
+
+  
   methodOne()
 }
 
