@@ -7,34 +7,47 @@
 </head>
 <body>
   <section class="main-nav">
-    <article><img src="images/overlook-logo.jpg" alt="overlook hotel logo"></article>
+    <article class="topnav hidden">
+      <a href="#home" class="active">Logo</a>
+      <!-- Navigation links (hidden by default) -->
+      <article id="myLinks">
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+      </article>
+      <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </article> 
+    <article class="logo-overlook"><img src="./images/overlook-logo.jpg" alt="overlook hotel logo" /></article>
     <article class="nav-buttons-top ">
-      <a href="#">my trips</a>
+      <a class="button-trips"href="#">my trips</a>
       <a class="button-signin" href="#signin">sign in</a>
       <article class="signin" id="signin">
         <article class="signin-inner">
-          <article class="signin-photo">
+          <div class="signin-photo">
             <img
-              src="images/amenities/lobby-sky.jpg"
-              alt="">
-          </article>
+              src="./images/amenities/lobby-sky.jpg"
+              alt="inside photo looking up into a narrow window filled tower">
+          </div>
           <article class="signin-text">
             <h1>overlook login</h1>
             <p>welcome to the overlook hotel</p>
             <label for="login">User Login:</label>
-            <input type="text" name="login" id="">
+            <input class="login-user" type="text" name="login" id="">
             <label for="password">Password:</label>
-            <input type="password" name="password" id="">
-            <a href="#">submit</a>
+            <input class="login-password"type="password" name="password" id="">
+            <a class="login-button" href="#">submit</a>
           </article>
           <a class="close-signin" href="#">X</a>
         </article>
       </article>
     </article>
     <article class="nav-buttons-bottom">
-      <a href="#">Find and Reserve</a>
-      <a href="#">Resort Info</a>
-      <a href="#">Amenities</a>
+      <a class="button-find" href="#">Find and Reserve</a>
+      <a class="button-info" href="#">Resort Info</a>
+      <a class="button-features" href="#">Amenities</a>
     </article>
   </nav>
   </section>

@@ -1,6 +1,9 @@
 //Color Variables
-$color-white: #ebdede;
+$color-white: #fff;
+$color-mobile: #4CAF50;
+$color-grey: #686868;
 $color-black: #030c0a;
+$nav-bar: #47BDFF;
 
 
 
@@ -8,7 +11,29 @@ $color-black: #030c0a;
 
 
 
+
+
 //Animations
 
+@mixin popin($deg, $time) {
+  transform: rotate($deg);
+  transition: $time ease-in-out;
+}
 
+@mixin button-movement {
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba($color-black, 0.2);
+
+    &:after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+    }
+  }
+
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba($color-black, 0.2);
+  }
+}
 
