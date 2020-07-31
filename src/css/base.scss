@@ -1,4 +1,6 @@
 @import 'variables';
+@import 'nav-bar';
+@import 'manager';
 
 * {
   box-sizing: border-box;
@@ -11,64 +13,7 @@ html, body {
   font-size: 16px;
 }
 
-.logo-overlook {
-  position: absolute;
-}
- 
-@media screen and (max-width: 768px) {
-  html, body {
-    font-size: 12px;
-  }
-}
 
-.nav-buttons-top {
-  background-color: $nav-bar;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  align-items: flex-start;
-  width: 100vw;
-  height: 10vh;
-}
- 
-.button-signin {
-  text-decoration: none;
-  font-size: .875rem;
-  text-transform: uppercase;
-  border-radius: 1.5rem;
-  background-color: $color-white;
-  color: #47BDFF;
-  padding: .7rem .9rem;
-  font-weight: 900;
-  margin: 2vh 2vw 0 0;
-
-  @include button-movement;
-}
-
-.button-trips {
-    @extend .button-signin;
-}
-
-.nav-buttons-bottom {
-  position: absolute;
-  background-color: $nav-bar;
-  margin-bottom: 2vh;
-  width: 100vw;
-  height: 5vh;
-  
-}
-
-.button-find {
-  @extend .button-signin;
-}
-
-.button-info {
-  @extend .button-signin;
-}
-
-.button-features {
-  @extend .button-signin;
-}
  
 .signin {
   display: flex;
@@ -112,6 +57,7 @@ html, body {
   width: auto;
   height: 100%;
 }
+
 .signin-text {
   display: flex;
   flex-direction: column;
@@ -119,6 +65,7 @@ html, body {
   width: 60%;
   height: 100%;
   padding: 2rem;
+  position: relative;
 }
 
 .signin-text h1 {
@@ -172,6 +119,18 @@ html, body {
   text-align: center;
   cursor: pointer;
   text-decoration: none;
+}
+
+.manage-main {
+  height: 100vh;
+  margin-top: 15vh;
+}
+
+
+@media screen and (max-width: 768px) {
+  html, body {
+    font-size: 12px;
+  }
 }
 //HAMBURGER MENU
 // /* Style the navigation menu */

@@ -1,0 +1,58 @@
+.manage-main {
+  height: 100vh;
+  margin-top: 15vh;
+}
+
+.manage-search {
+  
+}
+
+.search-form {
+  display: inline-block;
+  position: absolute;
+  top: 13vh;
+  width: 100%;
+  text-align: center;
+}
+
+.calendar {
+  margin: 1em;
+}
+
+.search-manage {
+  margin: 1em;
+}
+
+.search-button {
+  @extend .button-signin
+}
+
+.manage-info {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2em;
+  
+}
+
+.manage-info > h2 {
+  width: 100vw;
+  font-size: 2.5em;
+  margin-bottom: 1em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-align: center;
+}
+
+.manage-revenue {
+  width: 100%;
+  height: 30vh;
+  border: black 3px solid;
+}
+
+.manage-guest {
+  @extend .manage-revenue;
+}
+
+.manage-bookings {
+  @extend .manage-revenue;
+}

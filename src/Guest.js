@@ -1,15 +1,31 @@
-class Guest {
+//ITERATION 2 GUEST NEEDS:
+
+//SHOULD SEE A DASHBOARD THAT SHOWS:
+
+//ALL ROOM BOOKINGS I HAVE MADE
+
+//TOTAL AMOUNT SPENT ON ROOMS
+
+//need to make an instance of guest at login matching users data from api
+
+
+class Guest extends Overlook {
   constructor() {
-    this.info = info;
-    this.data = data;
+    this.id = id;
+    this.name = name;
+    this.rooms = rooms;
+    this.previousTrips;
+    this.bookings; // Needs to be able to update for searching
   }
 
-  //extends from parent ?
-  // what specific things does this class do that others dont
+
 
 
   
   methodOne()
+
+
+
 }
 
 
