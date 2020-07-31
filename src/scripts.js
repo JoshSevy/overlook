@@ -1,4 +1,8 @@
 /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
+import {Overlook} from "./Overlook";
+import {Manager} from "./Manager";
+import {Guest} from "./Guest"
+
 
 
 // function myFunction() {
@@ -21,6 +25,21 @@ let guests = 'Hello';
 const allData = [];
 const bookings = [];
 
+const today = () => {
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+
+  today = yyyy + '/' + mm + '/' + dd;
+  return today;
+}
+
+let currentDay = today()
+console.log(currentDay);
+
+// const overlook = new Overlook(guests, rooms)
+// const manager = new Manager();
 
 // guestsDataAll();
 
@@ -52,6 +71,7 @@ form.addEventListener("submit", event => {
   let user = document.getElementById('login-user').value;
   let password = document.getElementById('password').value;
   validateLogin(user, password);
+  loginUser(user);
 });
 
 const validateLogin = (user, password) => {
@@ -60,6 +80,16 @@ const validateLogin = (user, password) => {
   } else {
     console.log(false);
   }
+}
+
+const loginUser = (user) => {
+//need to check if user is manager if manager load manager load in
+// may not need a manager instance but might come in handy for methods
+// if user need to check user and find user by id maybe using .includes
+// if user create a new User instance
+if (user === 'manager') {
+  let managar = new Manager();
+}
 }
 
 const searchFilter = () => {
@@ -100,10 +130,20 @@ const organizePost = (info) => {
   }, [])
 }
 
+const DisplayManager = () => {
+  // verify at login and display manager
+  // hide sign in, main page, user page, other buttons from before login
+}
+
+const DisplayUser = () => {
+  // verify its a user use new instanciation of user for data
+  // need to hide: SignIn, add logoff button at sign in, main page no login page
+  //unhide user page
+
+}
 
 
-
-// hide unhide functionality
+// hide unhide functionalityr
 
 // hideElements() {
 //   const args = Array.from(arguments)

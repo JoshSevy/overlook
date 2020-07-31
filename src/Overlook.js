@@ -6,9 +6,10 @@ class Overlook {
     this.bookings = bookings;
     this.rooms = rooms;
   }
+//think about methods the manager and a user may share use inheritance 
+// example availableRooms 
 
-
-  //Need method to update bookings
+//Need method to update bookings
 //parent class maybe ? 
 // think of methods all extended classes may need 
 // design class tree for these extends
