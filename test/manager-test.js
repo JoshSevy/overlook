@@ -1,18 +1,31 @@
 import chai from 'chai';
 import Manager from '../src/Manager'
+import Overlook from '../src/Overlook';
 const expect = chai.expect;
 
 
-describe('See if the tests are running', function () {
-  let users, rooms, bookings;
+describe('Manager', function () {
+  let users, rooms, bookings, overlook, manager;
 
+  before(() => {
 
-  beforeEach(() => {
-
-    user = {
-      "id": 55,
-      "name": "Roger"
-    }
+    users = [
+      {
+        "id": 1,
+        "name": "Leatha Ullrich"
+      },
+      {
+        "id": 2,
+        "name": "Rocio Schuster"
+      },
+      {
+        "id": 3,
+        "name": "Kelvin Schiller"
+      },
+      {
+        "id": 4,
+        "name": "Kennedi Emard"
+      }];
 
     bookings = [
       {
@@ -62,7 +75,7 @@ describe('See if the tests are running', function () {
         "costPerNight": 477.38
       },
       {
-        "number": 3,
+        "number": 24,
         "roomType": "single room",
         "bidet": false,
         "bedSize": "king",
@@ -70,7 +83,7 @@ describe('See if the tests are running', function () {
         "costPerNight": 491.14
       },
       {
-        "number": 4,
+        "number": 15,
         "roomType": "single room",
         "bidet": false,
         "bedSize": "queen",
@@ -78,26 +91,28 @@ describe('See if the tests are running', function () {
         "costPerNight": 429.44
       }]
 
+    overlook = new Overlook(users, rooms, bookings);
+    manager = new Manager(users, rooms, bookings);
 
   })
-  it.skip('should be a function', () => {
-    expect(true).to.equal(true);
+  it('should be an instance of Overlook', () => {
+    expect(overlook).to.be.an.instanceOf(Overlook);
   });
 
-  it.skip('should be an instance of Manager', () => {
+  it('should be an instance of Manager', () => {
     expect(manager).to.be.an.instanceOf(Manager);
   })
 
-  it.skip('should be have a name', () => {
-
+  it('should inherit users from Overlook', () => {
+    expect(manager.guests).to.be.an('array').with.a.lengthOf(4);
   })
 
-  it.skip('should be have an id', () => {
-
+  it('should return revenue by date', () => {
+    expect(manager.revenueByDate("2020/01/10")).eql(358.4);
   })
 
-  it.skip('should be have a list of previous stays', () => {
-
+  it('should return hotel occupency by date', () => {
+    expect(manager.percentageOccupied("2020/02/16")).to.eql(25)
   })
 
   it.skip('should show current booking', () => {
