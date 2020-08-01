@@ -45,25 +45,59 @@
   </nav>
   </section>
   <main>
-    <section class="manager hidden">
-      <section class="manage-search">
-        <form class="search-form" action="" id="search-data">
-          <label for="date">Dates:</label>
-          <input class="calendar" type="date" id="date" name="date">
-          <label for="search">Search:</label>
-          <input class="search-manage" type="search" id="search-bar" name="search" placeholder="Search for Guest....">
-          <input class="search-button" type="submit">
-        </form>
-      </section>
+    <section class="manager ">
       <section class="manage-info">
         <h2>Manager Screen</h2>
-          <article class="manage-revenue">                <h3>today's revenue:</h3>
+          <article class="manage-revenue">
+            <h3>revenue for: date</h3>
+            <table>
+              <tr>
+                <th>revenue</th>
+                <th>something here</th>
+                <th>something else</th>
+                <th>total revenue</th>
+              </tr>
+              <tr>
+                <td>a</td>
+                <td>a</td>
+                <td>a</td>
+                <td>s</td>
+              </tr>
+              <tr>
+                <th>revenue</th>
+                <th>something here</th>
+                <th>something else</th>
+                <th>total revenue</th>
+              </tr>
+              <tr>
+                <th>revenue</th>
+                <th>something here</th>
+                <th>something else</th>
+                <th>total revenue</th>
+              </tr>
+              <tr>
+                <th>revenue</th>
+                <th>something here</th>
+                <th>something else</th>
+                <th>total revenue</th>
+              </tr>
+            </table>
           </article>
           <article class="manage-bookings"> 
             <h3>available rooms:</h3>
+            <form class="search-form" action="" id="search-data">
+              <label for="date">Dates:</label>
+              <input class="calendar" type="date" id="date" name="date">
+              <input type="submit" name="" id="">
+            </form>
           </article>
           <article class="manage-guest"> 
             <h3>guest data:</h3>
+          <form class="manage-search">
+            <label for="search">Search:</label>
+            <input type="search" id="search-bar" name="search" placeholder="Search for Guest....">
+            <input class="search-button" type="submit">
+          </form>
           </article>
       </section>
       <section class="user hidden">

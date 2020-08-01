@@ -1,7 +1,10 @@
-/* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
+
 import Overlook from './Overlook';
 import Guest from './Guest';
 import Manager from './Manager';
+
+
+/* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
 
 // function myFunction() {
 //   var x = document.getElementById("myLinks");
@@ -36,8 +39,6 @@ function catchAllData() {
 }
 
 
-console.log(overlook);
-
 function displayElement(displayArray) {
   displayArray.forEach(className => {
     document.querySelector(`.${className}`).classList.remove('hidden');
@@ -63,11 +64,6 @@ const today = () => {
 let currentDay = today()
 console.log(currentDay);
 
-// const overlook = new Overlook(guests, rooms)
-// const manager = new Manager();
-
-// guestsDataAll();
-
 //Fetch functionality
 
 const fetchData = (dataSet) => {
@@ -78,11 +74,9 @@ const fetchData = (dataSet) => {
     .catch(() => changeSystemMessage('Somethings Broke'));
 }
 
-const createOverlook = async (data) => {
-  await fetchData();
-  await overlook = new Overlook(allData[0], allData[1]);
-}
 
+//do more research async and await to get overlook to 
+//instanciate after fetch load
 
 
 const checkBookings = () => {
@@ -91,8 +85,6 @@ const checkBookings = () => {
     .then(booking => bookings.push(booking['bookings']))
     .catch((error) => console.log(error))
 }
-
-
 
 let form = document.querySelector('form');
 form.addEventListener("submit", event => {
@@ -104,12 +96,14 @@ form.addEventListener("submit", event => {
   console.log(formData);
   validateLogin(user, password);
   loginUser(user);
-
 });
+
+
+//still need to add in more validation this gets it to 
+// the next iteration though and allow page change
 
 const validateLogin = (user, password) => {
   if (user.includes('customer') || user.includes('manager') && password === "overlook2020") {
-    console.log('winning');
     return true;
   } else {
     return false;
@@ -121,16 +115,16 @@ const loginUser = (user) => {
 // may not need a manager instance but might come in handy for methods
 // if user need to check user and find user by id maybe using .includes
 // if user create a new User instance
-if (user == 'manager') {
-  debugger
-  // let managar = new Manager();
-  displayManager();
-} else if (user.includes('customer')){
-  
-  displayUser();
-}
+  if (user == 'manager') {
+    displayManager();
+  } else if (user.includes('customer')){
+    
+    displayUser();
+  }
 }
 
+
+//will be functionality for the search bar filter if I get to it
 const searchFilter = () => {
   let input = document.getElementById("search-bar");
   let filter = input.value.toUpperCase();
@@ -144,8 +138,6 @@ const searchFilter = () => {
 }
 
 //Post functionality
-
-
 
 const makePostObject = (data) => {
   return {
@@ -185,50 +177,30 @@ const displayUser = () => {
 }
 
 
-// hide unhide functionalityr
-
-// hideElements() {
-//   const args = Array.from(arguments)
-//   args.forEach(element => {
-//     document.querySelector(element).classList.add('hidden')
-//   })
-// }
-
-// unHideElements() {
-//   const args = Array.from(arguments)
-//   args.forEach(element => {
-//     document.querySelector(element).classList.remove('hidden')
-//   })
-// }
-
-
 //form functions
 
-// clearInputForms() {
-//   let inputs = document.querySelectorAll('input');
-//   for (var i = 0; i < inputs.length; i++) {
-//     inputs[i].value = ''
-//   }
-//   this.dateField.classList.add('hidden')
-//   const submit = document.getElementById('submit')
-//   if (inputs === null) {
-//     submit.innerText = `add new info`;
-//     submit.id = `new-fitness-entry`;
-//   }
-// }
+let clearInputForms = () => {
+  let inputs = document.querySelectorAll('input');
+  for (var i = 0; i < inputs.length; i++) {
+    inputs[i].value = ''
+  }
+  this.dateField.classList.add('hidden')
+  const submit = document.getElementById('submit')
+  if (inputs === null) {
+    submit.innerText = `add new info`;
+    submit.id = `new-fitness-entry`;
+  }
+}
+
+let changeSystemMessage = (message = '') => {
+  let display = document.getElementById('app-message')
+  display.innerText = message
+}
 
 
-
-
-// changeSystemMessage(message = '') {
-//   let display = document.getElementById('app-message')
-//   display.innerText = message
-// }
-
-
-// getStringOfWeekday(theDate) {
-// const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-// return weekdays[theDate.getDay()];
-//   }
+let getStringOfWeekday = (theDate) => {
+const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+return weekdays[theDate.getDay()];
+  }
 
 startApp();

@@ -8,23 +8,26 @@
 }
 
 .search-form {
-  display: inline-block;
-  position: absolute;
-  top: 13vh;
   width: 100%;
-  text-align: center;
+  text-align: end;
+  margin: -2em;
+  padding-top: 1em;
+}
+
+.manage-search {
+  @extend .search-form;
 }
 
 .calendar {
-  margin: 1em;
+  
 }
 
 .search-manage {
-  margin: 1em;
+  
 }
 
 .search-button {
-  @extend .button-signin
+  
 }
 
 .manage-info {
