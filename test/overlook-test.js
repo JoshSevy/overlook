@@ -1,15 +1,29 @@
 import chai from 'chai';
+import Overlook from '../src/Overlook';
 const expect = chai.expect;
 
 
-describe('See if the tests are running', function () {
-  let user, rooms, bookings;
+describe('Overlook', function () {
+  let users, rooms, bookings, overlook;
   beforeEach(() => {
 
-    user = {
-      "id": 55,
-      "name": "Roger"
-    }
+    users = [
+      {
+        "id": 1,
+        "name": "Leatha Ullrich"
+      },
+      {
+        "id": 2,
+        "name": "Rocio Schuster"
+      },
+      {
+        "id": 3,
+        "name": "Kelvin Schiller"
+      },
+      {
+        "id": 4,
+        "name": "Kennedi Emard"
+      }];
 
     bookings = [
       {
@@ -75,26 +89,26 @@ describe('See if the tests are running', function () {
         "costPerNight": 429.44
       }]
 
-
+    overlook = new Overlook(users, rooms, bookings);
   })
-  it.skip('should be a function', () => {
-    expect(true).to.equal(true);
+  it('should be an instance of Overlook', () => {
+    expect(overlook).to.be.an.instanceOf(Overlook);
   });
 
-  it.skip('should be an instance of Guest', () => {
-
+  it('should have an array of all guest', () => {
+    expect(overlook.guests).to.be.an('array').with.a.lengthOf(4);
   })
 
-  it.skip('should be have a name', () => {
-
+  it('should have an array of all rooms', () => {
+    expect(overlook.rooms).to.be.an('array').with.a.lengthOf(4);
   })
 
-  it.skip('should be have an id', () => {
-
+  it('should have an array of all hotel bookings', () => {
+    expect(overlook.bookings).to.be.an('array').with.a.lengthOf(4);
   })
 
-  it.skip('should be have a list of previous stays', () => {
-
+  it('should be able to return all vacant rooms for a date', () => {
+    expect(overlook.vacantRooms("2020/01/10")).to.be.an('array').with.a.lengthOf(3);
   })
 
   it.skip('should show current booking', () => {
