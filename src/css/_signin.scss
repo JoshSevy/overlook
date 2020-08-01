@@ -1,0 +1,111 @@
+.signin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(8, 8, 8, 0.8);
+  z-index: 2;
+  visibility: hidden;
+  opacity: 0;
+  overflow: hidden;
+  transition: .64s ease-in-out;
+
+  &-inner {
+  position: relative;
+  bottom: -100vw;
+  right: -100vh;
+  display: flex;
+  align-items: center;
+  max-width: 800px;
+  max-height: 600px;
+  width: 60%;
+  height: 80%;
+  background-color: $color-white;
+  @include popin(32deg, .64s);
+  }
+
+  &-photo {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 40%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  &-photo img {
+    width: auto;
+    height: 100%;
+  }
+
+  &-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+    height: 100%;
+    padding: 2rem;
+    position: relative;
+  }
+
+  &-text h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    color: $color-black;
+  }
+
+  &-text p {
+    font-size: .875rem;
+    color: $color-grey;
+    line-height: 1.5;
+  }
+  
+  &-text a {
+    text-decoration: none;
+    color:  $nav-bar;
+    justify-content: flex-end;
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  &:target {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &:target .signin-inner {
+    bottom: 0;
+    right: 0;
+    transform: rotate(0);
+  }
+}
+
+.close-signin {
+  position: absolute;
+  right: -1rem;
+  top: -1rem;
+  width: 3rem;
+  height: 3rem;
+  font-size: .875rem;
+  font-weight: 300;
+  border-radius: 100%;
+  background-color: $nav-bar;
+  z-index: 4;
+  color: $color-white;
+  line-height: 3rem;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.login-form {
+  width: 15vw;
+  padding: 2em;
+}

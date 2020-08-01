@@ -8,10 +8,15 @@
 <body>
   <section class="main-nav">
     </article> 
-    <article class="logo-overlook"><img src="./images/overlook.png" alt="overlook hotel logo" /></article>
+    <article class="logo-overlook">
+      <a href="#">
+      <img class="logo" src="./images/overlook.png" alt="overlook hotel logo" />
+      </a>
+    </article>
     <article class="nav-buttons-top ">
       <a class="button-trips"href="#">my trips</a>
       <a class="button-signin" href="#signin">sign in</a>
+      <a class="button-logout hidden" href="#">log out</a>
       <article class="signin" id="signin">
         <article class="signin-inner">
           <article class="signin-photo">
@@ -21,7 +26,7 @@
           </article>
           <article class="signin-text">
             <h2 class="login-header">welcome to the overlook hotel</h2>
-            <form action="" id="login-form" method="GET">
+            <form class="login-form" action="" id="login-form" method="GET">
               <h3>overlook login</h3>
             <label for="login">User Login:</label>
             <input class="login-user" type="text" name="login" id="login-user" required />
@@ -45,7 +50,17 @@
   </nav>
   </section>
   <main>
-    <section class="manager ">
+    <section class="main-page">
+      <article>photo caro</article>
+      <article>photo caro</article>
+      <article>photo caro</article>
+      <article>photo caro</article>
+      <article>photo caro</article>
+      <article>photo caro</article>
+      <article>photo caro</article>
+      <article>photo caro</article>
+    </section>
+    <section class="manager hidden">
       <section class="manage-info">
         <h2>Manager Screen</h2>
           <article class="manage-revenue">
@@ -100,10 +115,10 @@
           </form>
           </article>
       </section>
-      <section class="user hidden">
-        <section class="user-info">
-          <h2 class="user-header">Hello</h2>
-          <article class="user-visit"> 
+      <section class="guest hidden">
+        <section class="guest-info">
+          <h2 class="guest-header">Hello</h2>
+          <article class="guest-visit"> 
             your visit:
           </article>
           <article class=""> 

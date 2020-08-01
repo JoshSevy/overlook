@@ -20,9 +20,6 @@ import Manager from './Manager';
 // JUST focus on getting the user to get data for ITERATION 1
 //fetch check 
 const apiHead = 'https://fe-apps.herokuapp.com/api/v1/overlook/1904';
-const users = 'users';
-const rooms = 'rooms';
-let guests = 'Hello';
 const allData = [];
 const bookings = [];
 const formData = {};
@@ -31,24 +28,12 @@ let overlook;
 
 const startApp = () => {
   catchAllData('users', 'rooms');
+  checkBookings();
 }
 
-function catchAllData() {
+const catchAllData = () => {
   const args = Array.from(arguments);
   args.forEach(arg => fetchData(arg));
-}
-
-
-function displayElement(displayArray) {
-  displayArray.forEach(className => {
-    document.querySelector(`.${className}`).classList.remove('hidden');
-  })
-}
-
-function hideElement(hideArray) {
-  hideArray.forEach(className => {
-    document.querySelector(`.${className}`).classList.add('hidden');
-  })
 }
 
 const today = () => {
@@ -62,7 +47,7 @@ const today = () => {
 }
 
 let currentDay = today()
-console.log(currentDay);
+
 
 //Fetch functionality
 
@@ -74,10 +59,8 @@ const fetchData = (dataSet) => {
     .catch(() => changeSystemMessage('Somethings Broke'));
 }
 
-
 //do more research async and await to get overlook to 
 //instanciate after fetch load
-
 
 const checkBookings = () => {
   return fetch(`${apiHead}/bookings/bookings`)
@@ -91,35 +74,34 @@ form.addEventListener("submit", event => {
   event.preventDefault();
   let user = document.getElementById('login-user').value;
   let password = document.getElementById('password').value;
-  formData['user'] = user;
-  formData['password'] = password;
+  formData['user'] = user.toLowerCase();
+  formData['password'] = password.toLowerCase();
   console.log(formData);
   validateLogin(user, password);
-  loginUser(user);
+  loginUser();
 });
-
 
 //still need to add in more validation this gets it to 
 // the next iteration though and allow page change
 
 const validateLogin = (user, password) => {
-  if (user.includes('customer') || user.includes('manager') && password === "overlook2020") {
+  if (user.includes('customer') || user.includes('manager') 
+  && password === "overlook2020") {
     return true;
   } else {
     return false;
   }
 }
 
-const loginUser = (user) => {
+const loginUser = () => {
 //need to check if user is manager if manager load manager load in
 // may not need a manager instance but might come in handy for methods
 // if user need to check user and find user by id maybe using .includes
 // if user create a new User instance
-  if (user == 'manager') {
+  if (formData.user.includes('manager')) {
     displayManager();
-  } else if (user.includes('customer')){
-    
-    displayUser();
+  } else if (formData.user.includes('customer')) {
+    displayGuest();
   }
 }
 
@@ -162,20 +144,25 @@ const organizePost = (info) => {
 }
 
 const displayManager = () => {
-  let hide = ['button-signin', 'button-trips', 'nav-buttons-bottom', 'user', 'signin'];
-  let display = ['manager']
+  let hide = [
+    'button-signin', 'button-trips', 
+    'nav-buttons-bottom', 'guest', 'signin',
+    'main-page'
+  ];
+  let display = [
+    'manager', 'button-logout'
+  ]
   hideElement(hide);
   displayElement(display);
 }
 
-const displayUser = () => {
-  console.log('wrong user')
-  // verify its a user use new instanciation of user for data
-  // need to hide: SignIn, add logoff button at sign in, main page no login page
-  //unhide user page
-
+const displayGuest = () => {
+  let hide = [
+    'button-signin', 'manager', 'main-page'];
+  let display = ['guest', 'button-logout']
+  hideElement(hide);
+  displayElement(display);
 }
-
 
 //form functions
 

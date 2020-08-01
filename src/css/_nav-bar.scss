@@ -2,7 +2,7 @@
   position: absolute;
 }
  
-.logo-overlook > img{
+.logo {
   height: 10vh;
   position: relative;
 }
@@ -29,6 +29,10 @@
   margin: 2vh 2vw 0 0;
 
   @include button-movement;
+}
+
+.button-logout {
+  @extend .button-signin;
 }
 
 .button-trips {
