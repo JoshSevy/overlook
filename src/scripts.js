@@ -2,6 +2,7 @@
 import Overlook from './Overlook';
 import Guest from './Guest';
 import Manager from './Manager';
+import Page from './Page';
 
 
 /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
@@ -22,13 +23,23 @@ import Manager from './Manager';
 const apiHead = 'https://fe-apps.herokuapp.com/api/v1/overlook/1904';
 const allData = [];
 const bookings = [];
-const formData = {};
+const loginData = {};
 let overlook;
+let page;
 
 
-const startApp = () => {
-  catchAllData('users', 'rooms');
-  checkBookings();
+// const startApp = () => {
+//   catchAllData('users', 'rooms');
+//   checkBookings();
+// }
+
+const startApp = async () => {
+   await fetchData('users');
+   await fetchData('rooms');
+   await checkBookings();
+   page = new Page();
+   overlook = new Overlook(allData[0], allData[1], bookings);
+   console.log(overlook);
 }
 
 const catchAllData = () => {
@@ -51,22 +62,34 @@ let currentDay = today()
 
 //Fetch functionality
 
-const fetchData = (dataSet) => {
-  return fetch(`${apiHead}/${dataSet}/${dataSet}`)
-    .then(response => response.json())
-    .then(data => allData.push(data[dataSet]))
-    .catch((error) => console.log(error))
-    .catch(() => changeSystemMessage('Somethings Broke'));
+const fetchData = async (dataSet) => {
+  try {
+    try {
+      const response = await fetch(`${apiHead}/${dataSet}/${dataSet}`);
+      const data = await response.json();
+      return allData.push(data[dataSet]);
+    }
+    catch (error) {
+      return console.log(error);
+    }
+  }
+  catch (e) {
+    return changeSystemMessage('Somethings Broke');
+  }
 }
 
 //do more research async and await to get overlook to 
 //instanciate after fetch load
 
-const checkBookings = () => {
-  return fetch(`${apiHead}/bookings/bookings`)
-    .then(response => response.json())
-    .then(booking => bookings.push(booking['bookings']))
-    .catch((error) => console.log(error))
+const checkBookings = async () => {
+  try {
+    const response = await fetch(`${apiHead}/bookings/bookings`);
+    const booking = await response.json();
+    return bookings.push(booking['bookings']);
+  }
+  catch (error) {
+    return console.log(error);
+  }
 }
 
 let form = document.querySelector('form');
@@ -74,9 +97,9 @@ form.addEventListener("submit", event => {
   event.preventDefault();
   let user = document.getElementById('login-user').value;
   let password = document.getElementById('password').value;
-  formData['user'] = user.toLowerCase();
-  formData['password'] = password.toLowerCase();
-  console.log(formData);
+  loginData['user'] = user.toLowerCase();
+  loginData['password'] = password.toLowerCase();
+  console.log(loginData);
   validateLogin(user, password);
   loginUser();
 });
@@ -98,10 +121,14 @@ const loginUser = () => {
 // may not need a manager instance but might come in handy for methods
 // if user need to check user and find user by id maybe using .includes
 // if user create a new User instance
-  if (formData.user.includes('manager')) {
-    displayManager();
-  } else if (formData.user.includes('customer')) {
-    displayGuest();
+  if (loginData.user.includes('manager')) {
+    page.displayManager();
+    let manager = new Manager();
+    console.log(manager);
+  } else if (loginData.user.includes('customer')) {
+    page.displayGuest();
+    let guest = new Guest(guestData);
+    console.log(guest);
   }
 }
 
@@ -143,26 +170,7 @@ const organizePost = (info) => {
   }, [])
 }
 
-const displayManager = () => {
-  let hide = [
-    'button-signin', 'button-trips', 
-    'nav-buttons-bottom', 'guest', 'signin',
-    'main-page'
-  ];
-  let display = [
-    'manager', 'button-logout'
-  ]
-  hideElement(hide);
-  displayElement(display);
-}
 
-const displayGuest = () => {
-  let hide = [
-    'button-signin', 'manager', 'main-page'];
-  let display = ['guest', 'button-logout']
-  hideElement(hide);
-  displayElement(display);
-}
 
 //form functions
 

@@ -4,6 +4,7 @@ class Overlook {
   constructor(guests, rooms) {
     this.guests = guests;
     this.rooms = rooms;
+    this.bookings = bookings;
   }
 //think about methods the manager and a user may share use inheritance 
 // example availableRooms 
