@@ -1,14 +1,29 @@
 //Parent Class for Overlook
 
 class Overlook {
-  constructor(guests, rooms) {
+  constructor(guests, rooms, bookings) {
     this.guests = guests;
     this.rooms = rooms;
     this.bookings = bookings;
   }
-//think about methods the manager and a user may share use inheritance 
-// example availableRooms 
 
+  //this method can be used by manager and user to access availiable rooms by date
+  
+  bookingsByDate(date) {
+    return this.bookings.filter(book => book.date === date);
+  }
+
+  vacantRooms(date) {
+    let vacantRooms = this.rooms.reduce((vacant, room) => {
+      let nonVacant = this.bookings
+        .find(book => book.roomNumber === room.number 
+          && book.date === date);
+      if(!nonVacant)
+        vacant.push(room);
+      return vacant
+    }, []);
+    return vacantRooms;
+  }
 //Need method to update bookings
 //parent class maybe ? 
 // think of methods all extended classes may need 

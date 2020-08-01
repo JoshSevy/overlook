@@ -39,7 +39,6 @@ const startApp = async () => {
    await checkBookings();
    page = new Page();
    overlook = new Overlook(allData[0], allData[1], bookings);
-   console.log(overlook);
 }
 
 const catchAllData = () => {

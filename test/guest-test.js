@@ -5,14 +5,32 @@ const expect = chai.expect;
 
 
 
-describe('See if the tests are running', function () {
-let user, rooms, bookings, guest;
+describe.only('Guest', () => {
+let user, users, rooms, bookings, guest, overlook;
   beforeEach( () => {
 
     user = {
       "id": 55,
       "name": "Roger"
     }
+
+    users = [
+      {
+        "id": 1,
+        "name": "Leatha Ullrich"
+      },
+      {
+        "id": 2,
+        "name": "Rocio Schuster"
+      },
+      {
+        "id": 3,
+        "name": "Kelvin Schiller"
+      },
+      {
+        "id": 4,
+        "name": "Kennedi Emard"
+      }];
 
     bookings = [
       {
@@ -78,11 +96,14 @@ let user, rooms, bookings, guest;
         "costPerNight": 429.44
       }]
 
-    guest = new Guest(user);
+
+    overlook = new Overlook(users, rooms, bookings)  
+    guest = new Guest(rooms, bookings, user);
 
   })
 
   it('should be a function', () => {
+    console.log(guest)
     expect(guest).to.be.an.instanceOf(Guest);
   });
 

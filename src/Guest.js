@@ -1,5 +1,5 @@
 //ITERATION 2 GUEST NEEDS:
-
+import Overlook from './Overlook';
 //SHOULD SEE A DASHBOARD THAT SHOWS:
 
 //ALL ROOM BOOKINGS I HAVE MADE
@@ -14,24 +14,25 @@
 
 //methods are for through iteration 2
 
-class Guest {
-  constructor(guest) {
+class Guest extends Overlook {
+  constructor(rooms, bookings, guest) {
+    super(users, rooms, bookings);
     this.id = guest.id;
     this.name = guest.name;
-    this.rooms = [];// need to update room data after instance of guest
-    this.previousTrips;// same as here show previous bookings
-    this.booking; // Needs to be able to update for searching
+    // need to update room data after instance of guest
+    this.previousVisits;// same as here show previous bookings
+    this.stay; // Needs to be able to update for searching
   }
 
   // getRoomInfo()
   // might not need 
 
 
-  // roomBookings()
+  allBookings() {
 
-  // method to return booking may not need
-  // may be able to update bookings from 
-  // scripts on button click 
+  }
+
+  
 
 
   getPreviousTrips() {
