@@ -3,4 +3,4 @@ const expect = chai.expect;
 const spies = require('chai-spies');
 chai.use(spies);
 
-import from '../src/scripts';
+// import from '../src/scripts';

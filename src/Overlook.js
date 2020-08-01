@@ -1,9 +1,8 @@
 //Parent Class for Overlook
 
 class Overlook {
-  constructor(guests, bookings, rooms) {
+  constructor(guests, rooms) {
     this.guests = guests;
-    this.bookings = bookings;
     this.rooms = rooms;
   }
 //think about methods the manager and a user may share use inheritance 
@@ -22,4 +21,4 @@ class Overlook {
 }
 
 
-module.exports = Overlook;
+export default Overlook;

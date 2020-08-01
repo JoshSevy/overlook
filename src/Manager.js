@@ -9,7 +9,7 @@
 //PERCENTAGE fo rooms occupied for today's date
 
 
-class Manager extends Overlook {
+class Manager {
   constructor() {
     
   }
@@ -46,4 +46,4 @@ class Manager extends Overlook {
 }
 
 
-module.exports = Manager;
+export default Manager;

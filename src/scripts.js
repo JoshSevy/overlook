@@ -1,9 +1,7 @@
 /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
-import {Overlook} from "./Overlook";
-import {Manager} from "./Manager";
-import {Guest} from "./Guest"
-
-
+import Overlook from './Overlook';
+import Guest from './Guest';
+import Manager from './Manager';
 
 // function myFunction() {
 //   var x = document.getElementById("myLinks");
@@ -24,6 +22,33 @@ const rooms = 'rooms';
 let guests = 'Hello';
 const allData = [];
 const bookings = [];
+const formData = {};
+let overlook;
+
+
+const startApp = () => {
+  catchAllData('users', 'rooms');
+}
+
+function catchAllData() {
+  const args = Array.from(arguments);
+  args.forEach(arg => fetchData(arg));
+}
+
+
+console.log(overlook);
+
+function displayElement(displayArray) {
+  displayArray.forEach(className => {
+    document.querySelector(`.${className}`).classList.remove('hidden');
+  })
+}
+
+function hideElement(hideArray) {
+  hideArray.forEach(className => {
+    document.querySelector(`.${className}`).classList.add('hidden');
+  })
+}
 
 const today = () => {
   var today = new Date();
@@ -53,6 +78,13 @@ const fetchData = (dataSet) => {
     .catch(() => changeSystemMessage('Somethings Broke'));
 }
 
+const createOverlook = async (data) => {
+  await fetchData();
+  await overlook = new Overlook(allData[0], allData[1]);
+}
+
+
+
 const checkBookings = () => {
   return fetch(`${apiHead}/bookings/bookings`)
     .then(response => response.json())
@@ -60,25 +92,27 @@ const checkBookings = () => {
     .catch((error) => console.log(error))
 }
 
-fetchData(users);
-checkBookings();
-console.log(allData);
-console.log(bookings);
+
 
 let form = document.querySelector('form');
 form.addEventListener("submit", event => {
   event.preventDefault();
   let user = document.getElementById('login-user').value;
   let password = document.getElementById('password').value;
+  formData['user'] = user;
+  formData['password'] = password;
+  console.log(formData);
   validateLogin(user, password);
   loginUser(user);
+
 });
 
 const validateLogin = (user, password) => {
   if (user.includes('customer') || user.includes('manager') && password === "overlook2020") {
-    console.log(true);
+    console.log('winning');
+    return true;
   } else {
-    console.log(false);
+    return false;
   }
 }
 
@@ -87,8 +121,13 @@ const loginUser = (user) => {
 // may not need a manager instance but might come in handy for methods
 // if user need to check user and find user by id maybe using .includes
 // if user create a new User instance
-if (user === 'manager') {
-  let managar = new Manager();
+if (user == 'manager') {
+  debugger
+  // let managar = new Manager();
+  displayManager();
+} else if (user.includes('customer')){
+  
+  displayUser();
 }
 }
 
@@ -130,12 +169,15 @@ const organizePost = (info) => {
   }, [])
 }
 
-const DisplayManager = () => {
-  // verify at login and display manager
-  // hide sign in, main page, user page, other buttons from before login
+const displayManager = () => {
+  let hide = ['button-signin', 'button-trips', 'nav-buttons-bottom', 'user', 'signin'];
+  let display = ['manager']
+  hideElement(hide);
+  displayElement(display);
 }
 
-const DisplayUser = () => {
+const displayUser = () => {
+  console.log('wrong user')
   // verify its a user use new instanciation of user for data
   // need to hide: SignIn, add logoff button at sign in, main page no login page
   //unhide user page
@@ -189,3 +231,4 @@ const DisplayUser = () => {
 // return weekdays[theDate.getDay()];
 //   }
 
+startApp();

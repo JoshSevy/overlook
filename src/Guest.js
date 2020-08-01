@@ -14,26 +14,47 @@
 
 //methods are for through iteration 2
 
-class Guest extends Overlook {
-  constructor() {
+class Guest {
+  constructor(guest) {
     this.id = guest.id;
     this.name = guest.name;
-    this.rooms = rooms;// need to update room data after instance of guest
+    this.rooms = [];// need to update room data after instance of guest
     this.previousTrips;// same as here show previous bookings
-    this.bookings; // Needs to be able to update for searching
+    this.booking; // Needs to be able to update for searching
   }
 
   // getRoomInfo()
+  // might not need 
 
 
   // roomBookings()
 
+  // method to return booking may not need
+  // may be able to update bookings from 
+  // scripts on button click 
 
-  // getPreviousTrips()
+
+  getPreviousTrips() {
+    //call bookings on load with overlook 
+    //inherit into user and manager
+    // compare user with ids in bookings 
+    // return array of bookings
+    // maybe a parent method that returns
+    // all bookings for user by id 
+    //  this way the manager and guest can 
+    // inherit from parent
+  }
+
+  getTotalCost() {
+    return this.previousTrips.reduce((sum, bookings) => {
+      sum += bookings.costPerNight;
+      return sum;
+    }, 0)
+  }
 
 
 
 }
 
 
-module.exports = Guest;
+export default Guest;
