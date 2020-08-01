@@ -1,5 +1,7 @@
 //ITERATION 2 MANAGER SECTION LOGIC NEEDED
 
+import Overlook from "./Overlook";
+
 
 // Should see a dashboard page that shows
 //TOTAL ROOMS AVAILABLE for today's date
@@ -9,28 +11,27 @@
 //PERCENTAGE fo rooms occupied for today's date
 
 
-class Manager {
-  constructor() {
-    
+class Manager extends Overlook {
+  constructor(guests, rooms, bookings) {
+    super(guests, rooms, bookings)
   }
 
+  revenueByDate(date) { 
+    let revenue = this.bookingsByDate(date)
+    let total = revenue.reduce((sum, booking) => {
+      let price = this.rooms
+        .find(room => room.number === booking.roomNumber)
+      sum += price.costPerNight;
+      return sum
+    }, 0)
+    return total;
+  }
+ 
+  percentageOccupied(date) {
+    let occupied = this.bookingsByDate(date);
+    return (occupied.length / this.rooms.length) * 100;
+  }
 
-  // roomsAvaliable()
-  //per spec just need to return a total number of rooms available
-  // might be handy to put into an array an use .length to show room amount 
-  // this would also work for all room currently available maybe to guest as well
-
-
-  // revenueToday()
-  //need to check all bookings for today
-  // reduce to return total cost of all bookings rooms
-  // need this to be able to be expandable to include room service charges EXTENSION...
-
-
-  // percentageOccupied()
-// look at bookings just need to return a percentage value 
-// rooms booked / total rooms = decimal 
-// return decimal in a percentage format
 
   // getUserInfo()
 
