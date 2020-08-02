@@ -1,5 +1,3 @@
-import Guest from './Guest';
-import Manager from './Manager';
 import Page from './Page';
 
 
@@ -18,8 +16,7 @@ let apiHead = 'https://fe-apps.herokuapp.com/api/v1/overlook/1904';
 let allData = {};
 const loginData = {};
 let page;
-let manager;
-let guest;
+
 
 
 
@@ -33,7 +30,6 @@ const startApp = async () => {
    await fetchData('users');
    await checkBookings();
    page = new Page();
-   console.log(allData)
 }
 
 const fetchData = async (dataSet) => {
@@ -51,8 +47,6 @@ const fetchData = async (dataSet) => {
     return changeSystemMessage('Somethings Broke');
   }
 }
-
-
 
 const checkBookings = async () => {
   try {
@@ -83,7 +77,7 @@ form.addEventListener("submit", event => {
   loginData['password'] = password.toLowerCase();
   console.log(loginData);
   validateLogin(user, password);
-  loginUser();
+  page.loginUser(loginData, allData);
 });
 
 //still need to add in more validation this gets it to 
@@ -97,54 +91,6 @@ const validateLogin = (user, password) => {
     return false;
   }
 }
-
-const loginUser = () => {
-  if (loginData.user.includes('manager')) {
-    manager = new Manager(allData.rooms, bookings, allData.users);
-    page.displayManager();
-    displayManagerTable()
-  } else if (loginData.user.includes('customer')) {
-    page.displayGuest();
-    guest = new Guest(allData.rooms, allData.bookings, allData.users[16].id, allData.users[16].name)
-    guest.allBookings(allData.bookings);
-    displayGuestData();
-    console.log()
-  }
-}
-
-const getUserInfoFromSignIn = () => {
-  let num = loginData.user.slice(8);
-  let user = Object.values(allData.users)
-  let result = user.filter(guest => guest.id === num)
-  console.log(result);
-}
-
-const displayManagerTable = () => {
-  let dailyRevenue = document.querySelector('.manage-revenue');
-  let revenueHtml = `
-    <h3>revenue for: ${page.today()}<h3>
-    <h2>${manager.revenueByDate(page.today())}<h2>
-    <h3> Hotel Occupency: <h3>
-    <h2>${manager.percentageOccupied(page.today())}<h2>
-    `
-  dailyRevenue.innerHTML = revenueHtml;
-}
-
-const displayGuestData = () => {
-  let guestData = document.querySelector('.guest-manage');
-  
-
-  let guestManageHtml = `
-  <h3> Today: ${page.today()}<h3>
-  <h2>Future Html:<h2>
-  <h3> Past Visits: <h3>
-  <ul><li>${guest.allVisits[3].roomNumber} ${guest.allVisits[3].date}</li></ul>
-  <h2>coming soom</h2>
-  <h2>${guest.getTotalCost()}<h2>
-  `
-  guestData.innerHTML = guestManageHtml;
-}
-
 
 const pastVisitsDisplay = () => {
   guest.allVisits.forEach(visit => {
