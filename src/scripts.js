@@ -14,10 +14,6 @@ import Page from './Page';
 //   }
 // }
 
-// This is all the functionality I am going to need for ITERATION 1 display side.
-
-// JUST focus on getting the user to get data for ITERATION 1
-//fetch check 
 let apiHead = 'https://fe-apps.herokuapp.com/api/v1/overlook/1904';
 let allData = {};
 const bookings = [];
@@ -39,9 +35,6 @@ const startApp = async () => {
    page = new Page();
 }
 
-
-
-
 const fetchData = async (dataSet) => {
   try {
     try {
@@ -58,8 +51,7 @@ const fetchData = async (dataSet) => {
   }
 }
 
-//do more research async and await to get overlook to 
-//instanciate after fetch load
+
 
 const checkBookings = async () => {
   try {
@@ -71,7 +63,7 @@ const checkBookings = async () => {
     return console.log(error);
   }
 }
-
+// would like to grab user directly from api during sign in STRETCH GOAL
 // const guestLogin = async (loginInfo) => {
 //   try {
 //     const response = await fetch(`${apiHead}/users/users`);
@@ -80,6 +72,7 @@ const checkBookings = async () => {
 //   }
 // }
 
+//Eventually needs to move into page class get everything working first
 let form = document.querySelector('form');
 form.addEventListener("submit", event => {
   event.preventDefault();
@@ -115,7 +108,6 @@ const loginUser = () => {
     console.log(guest)
   }
 }
-
 
 const getUserInfoFromSignIn = () => {
   let num = loginData.user.slice(8);
@@ -197,5 +189,10 @@ let getStringOfWeekday = (theDate) => {
 const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 return weekdays[theDate.getDay()];
   }
+
+//EVENT HANDLERS MOVE TO PAGE CLASS ONCE WORKING
+
+
+
 
 startApp();
