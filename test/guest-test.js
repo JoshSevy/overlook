@@ -6,31 +6,13 @@ const expect = chai.expect;
 
 
 describe.only('Guest', () => {
-let user, users, rooms, bookings, guest, overlook;
+let user, rooms, bookings, guest;
   beforeEach( () => {
 
     user = {
       "id": 55,
       "name": "Roger"
     }
-
-    users = [
-      {
-        "id": 1,
-        "name": "Leatha Ullrich"
-      },
-      {
-        "id": 2,
-        "name": "Rocio Schuster"
-      },
-      {
-        "id": 3,
-        "name": "Kelvin Schiller"
-      },
-      {
-        "id": 4,
-        "name": "Kennedi Emard"
-      }];
 
     bookings = [
       {
@@ -95,15 +77,12 @@ let user, users, rooms, bookings, guest, overlook;
         "numBeds": 15,
         "costPerNight": 429.44
       }]
-
-
-    overlook = new Overlook(users, rooms, bookings)  
-    guest = new Guest(rooms, bookings, user);
+ 
+    guest = new Guest(rooms, bookings, user.id, user.name);
 
   })
 
   it('should be a function', () => {
-    console.log(guest)
     expect(guest).to.be.an.instanceOf(Guest);
   });
 
@@ -114,18 +93,21 @@ let user, users, rooms, bookings, guest, overlook;
   it('should be have a name',()  => {
     expect(guest.name).to.eql('Roger');
   })
-
-  it.skip('should return current visit info', () => {
-    expect(guest.currentBooking()).to.eql(rooms[2])
+  
+  it('should list all bookings past, present, current, and beyond', () => {
+    guest.allBookings();
+    expect(guest.allVisits).to.be.an('array').with.a.lengthOf(4);
   })
 
+  it('should return total cost of all visits', () => {
+    guest.allBookings();
+    expect(guest.getTotalCost(guest.allVisits)).to.eql(835.78)
+  })
+  
 
   it.skip('should return cost of current visit', () => {
     expect(guest.booking).to.eql(491.14)
   })
 
-  it.skip('should list all previous bookings', () => {
-    expect(guest.previousTrips).to.an('array').with.a.lengthOf(4);
-  })
 
 });

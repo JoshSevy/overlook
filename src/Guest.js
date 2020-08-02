@@ -15,46 +15,34 @@ import Overlook from './Overlook';
 //methods are for through iteration 2
 
 class Guest extends Overlook {
-  constructor(rooms, bookings, guest) {
-    super(users, rooms, bookings);
-    this.id = guest.id;
-    this.name = guest.name;
-    // need to update room data after instance of guest
-    this.previousVisits;// same as here show previous bookings
-    this.stay; // Needs to be able to update for searching
+  constructor(rooms, bookings, id, name) {
+    super(rooms, bookings);
+    this.id = id;
+    this.name = name;
+    this.allVisits = [];
+    this.stay; 
   }
-
-  // getRoomInfo()
-  // might not need 
-
 
   allBookings() {
-
+    let allBookings = this.bookings.filter(booking => {
+      return booking.userID === this.id
+    }).sort((a, b) => a.date - b.date);
+    this.allVisits = [...allBookings];
   }
 
-  
-
-
-  getPreviousTrips() {
-    //call bookings on load with overlook 
-    //inherit into user and manager
-    // compare user with ids in bookings 
-    // return array of bookings
-    // maybe a parent method that returns
-    // all bookings for user by id 
-    //  this way the manager and guest can 
-    // inherit from parent
-  }
-
+// could refactor to go into parent return daily revenue and user total cost
   getTotalCost() {
-    return this.previousTrips.reduce((sum, bookings) => {
-      sum += bookings.costPerNight;
+    let total = this.allVisits.reduce((sum, cost) => {
+      this.rooms.forEach(room => {
+        if (room.number == cost.roomNumber) {
+          sum += room.costPerNight;
+          return sum;
+        }
+      })
       return sum;
     }, 0)
+    return total;
   }
-
-
-
 }
 
 

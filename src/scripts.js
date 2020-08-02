@@ -1,5 +1,3 @@
-
-import Overlook from './Overlook';
 import Guest from './Guest';
 import Manager from './Manager';
 import Page from './Page';
@@ -20,12 +18,13 @@ import Page from './Page';
 
 // JUST focus on getting the user to get data for ITERATION 1
 //fetch check 
-const apiHead = 'https://fe-apps.herokuapp.com/api/v1/overlook/1904';
-const allData = [];
+let apiHead = 'https://fe-apps.herokuapp.com/api/v1/overlook/1904';
+let allData = {};
 const bookings = [];
 const loginData = {};
-let overlook;
 let page;
+let manager;
+
 
 
 // const startApp = () => {
@@ -34,39 +33,21 @@ let page;
 // }
 
 const startApp = async () => {
-   await fetchData('users');
    await fetchData('rooms');
+   await fetchData('users');
    await checkBookings();
    page = new Page();
-   overlook = new Overlook(allData[0], allData[1], bookings);
 }
 
-const catchAllData = () => {
-  const args = Array.from(arguments);
-  args.forEach(arg => fetchData(arg));
-}
-
-const today = () => {
-  var today = new Date();
-  var dd = String(today.getDate()).padStart(2, '0');
-  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-  var yyyy = today.getFullYear();
-
-  today = yyyy + '/' + mm + '/' + dd;
-  return today;
-}
-
-let currentDay = today()
 
 
-//Fetch functionality
 
 const fetchData = async (dataSet) => {
   try {
     try {
       const response = await fetch(`${apiHead}/${dataSet}/${dataSet}`);
       const data = await response.json();
-      return allData.push(data[dataSet]);
+      return allData[dataSet] = data;
     }
     catch (error) {
       return console.log(error);
@@ -90,6 +71,14 @@ const checkBookings = async () => {
     return console.log(error);
   }
 }
+
+// const guestLogin = async (loginInfo) => {
+//   try {
+//     const response = await fetch(`${apiHead}/users/users`);
+//     const guests = await response.json();
+//     const guest
+//   }
+// }
 
 let form = document.querySelector('form');
 form.addEventListener("submit", event => {
@@ -116,21 +105,35 @@ const validateLogin = (user, password) => {
 }
 
 const loginUser = () => {
-//need to check if user is manager if manager load manager load in
-// may not need a manager instance but might come in handy for methods
-// if user need to check user and find user by id maybe using .includes
-// if user create a new User instance
   if (loginData.user.includes('manager')) {
+    manager = new Manager(allData.rooms, bookings, allData.users);
     page.displayManager();
-    let manager = new Manager();
-    console.log(manager);
+    displayManagerTable()
   } else if (loginData.user.includes('customer')) {
     page.displayGuest();
-    let guest = new Guest(guestData);
-    console.log(guest);
+    guest = new Guest(allData.rooms, bookings, allData.users[19].id, allData[19].name)
+    console.log(guest)
   }
 }
 
+
+const getUserInfoFromSignIn = () => {
+  let num = loginData.user.slice(8);
+  let user = Object.values(allData.users)
+  let result = user.filter(guest => guest.id === num)
+  console.log(result);
+}
+
+const displayManagerTable = () => {
+  let dailyRevenue = document.querySelector('.manage-revenue');
+  let revenueHtml = `
+    <h3>revenue for: ${page.today()}<h3>
+    <h2>${manager.revenueByDate(page.today())}<h2>
+    <h3> Hotel Occupency: <h3>
+    <h2>${manager.percentageOccupied(page.today())}<h2>
+    `
+  dailyRevenue.innerHTML = revenueHtml;
+}
 
 //will be functionality for the search bar filter if I get to it
 const searchFilter = () => {
@@ -169,8 +172,6 @@ const organizePost = (info) => {
   }, [])
 }
 
-
-
 //form functions
 
 let clearInputForms = () => {
@@ -182,7 +183,7 @@ let clearInputForms = () => {
   const submit = document.getElementById('submit')
   if (inputs === null) {
     submit.innerText = `add new info`;
-    submit.id = `new-fitness-entry`;
+    submit.id = ``;
   }
 }
 

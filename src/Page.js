@@ -1,45 +1,14 @@
+
+import Manager from './Manager';
+
+
 class Page {
 
-  constructor() {
-    
-  }
 
   changeSystemMessage(message = '') {
     let display = document.getElementById('sign-in')
     display.innerText = message
   }
-
-  insertManagerLayout(html) {
-    const weekdays = document.querySelectorAll('.manager-data');
-    for (var i = 0; i < weekdays.length; i++) {
-      weekdays[i].innerHTML = html;
-    }
-  }
-
-  createManagerLayoutHtml() {
-    return {
-      'current-revenue': `
-        <th class="" id="">0</th>`,
-      'vacancy':`
-        <th class="" id="">0</th>    
-        <th class="" id="">0</th> 
-        <th class="" id="">0</th>`,
-      'guest-data':`
-        <th class="" id="">0</th>    
-        <th class="" id="">0</th> 
-        <th class="" id="">0</th>
-      `
-    }
-  }
-
-  // populateGuestData(guest) {
-  //   const accountInfo = document.getElementById('account-info').children;
-  //   for (var i = 0; i < accountInfo.length; i++) {
-  //     if (accountInfo[i].classList.contains("number")) {
-  //       accountInfo[i].innerText = user[accountInfo[i].id];
-  //     }
-  //   }
-  // }
 
   displayManager() {
     let hide = [
@@ -86,6 +55,17 @@ class Page {
       submit.id = `new-fitness-entry`;
     }
   }
+
+  today() {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '/' + mm + '/' + dd;
+    return today;
+  }
+
 }
 
 export default Page;

@@ -12,8 +12,9 @@ import Overlook from "./Overlook";
 
 
 class Manager extends Overlook {
-  constructor(guests, rooms, bookings) {
-    super(guests, rooms, bookings)
+  constructor(rooms, bookings, guests) {
+    super(rooms, bookings)
+    this.guests = guests;
   }
 
   revenueByDate(date) { 

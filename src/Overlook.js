@@ -1,13 +1,10 @@
 //Parent Class for Overlook
 
 class Overlook {
-  constructor(guests, rooms, bookings) {
-    this.guests = guests;
+  constructor(rooms, bookings) {
     this.rooms = rooms;
     this.bookings = bookings;
   }
-
-  //this method can be used by manager and user to access availiable rooms by date
   
   bookingsByDate(date) {
     return this.bookings.filter(book => book.date === date);
