@@ -16,10 +16,10 @@ import Page from './Page';
 
 let apiHead = 'https://fe-apps.herokuapp.com/api/v1/overlook/1904';
 let allData = {};
-const bookings = [];
 const loginData = {};
 let page;
 let manager;
+let guest;
 
 
 
@@ -33,6 +33,7 @@ const startApp = async () => {
    await fetchData('users');
    await checkBookings();
    page = new Page();
+   console.log(allData)
 }
 
 const fetchData = async (dataSet) => {
@@ -40,7 +41,7 @@ const fetchData = async (dataSet) => {
     try {
       const response = await fetch(`${apiHead}/${dataSet}/${dataSet}`);
       const data = await response.json();
-      return allData[dataSet] = data;
+      return allData[dataSet] = data[dataSet];
     }
     catch (error) {
       return console.log(error);
@@ -57,7 +58,7 @@ const checkBookings = async () => {
   try {
     const response = await fetch(`${apiHead}/bookings/bookings`);
     const booking = await response.json();
-    return bookings.push(booking['bookings']);
+    return allData.bookings = booking['bookings'];
   }
   catch (error) {
     return console.log(error);
@@ -104,8 +105,10 @@ const loginUser = () => {
     displayManagerTable()
   } else if (loginData.user.includes('customer')) {
     page.displayGuest();
-    guest = new Guest(allData.rooms, bookings, allData.users[19].id, allData[19].name)
-    console.log(guest)
+    guest = new Guest(allData.rooms, allData.bookings, allData.users[16].id, allData.users[16].name)
+    guest.allBookings(allData.bookings);
+    displayGuestData();
+    console.log()
   }
 }
 
@@ -125,6 +128,28 @@ const displayManagerTable = () => {
     <h2>${manager.percentageOccupied(page.today())}<h2>
     `
   dailyRevenue.innerHTML = revenueHtml;
+}
+
+const displayGuestData = () => {
+  let guestData = document.querySelector('.guest-manage');
+  
+
+  let guestManageHtml = `
+  <h3> Today: ${page.today()}<h3>
+  <h2>Future Html:<h2>
+  <h3> Past Visits: <h3>
+  <ul><li>${guest.allVisits[3].roomNumber} ${guest.allVisits[3].date}</li></ul>
+  <h2>coming soom</h2>
+  <h2>${guest.getTotalCost()}<h2>
+  `
+  guestData.innerHTML = guestManageHtml;
+}
+
+
+const pastVisitsDisplay = () => {
+  guest.allVisits.forEach(visit => {
+
+  })
 }
 
 //will be functionality for the search bar filter if I get to it

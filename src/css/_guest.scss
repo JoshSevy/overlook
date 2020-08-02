@@ -1,0 +1,34 @@
+.guest {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.guest-info{
+  color: black;
+}
+
+.guest-header {
+  font-size: 4em;
+}
+
+.guest-visit {
+  font-size: 4em;
+  height: 25vh;
+  width: 100%;
+  border: $nav-bar solid 4px;
+}
+
+.guest-search {
+  font-size: 4em;
+  height: 25vh;
+  width: 100%;
+  border: $nav-bar solid 4px;
+}
+
+.guest-manage {
+  fons-size: 4em;
+  height: 25vh;
+  width: 100%;
+  border: $nav-bar solid 4px;
+}

@@ -23,8 +23,8 @@ class Guest extends Overlook {
     this.stay; 
   }
 
-  allBookings() {
-    let allBookings = this.bookings.filter(booking => {
+  allBookings(bookings) {
+    let allBookings = bookings.filter(booking => {
       return booking.userID === this.id
     }).sort((a, b) => a.date - b.date);
     this.allVisits = [...allBookings];
