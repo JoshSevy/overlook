@@ -17,9 +17,6 @@ let allData = {};
 const loginData = {};
 let page;
 
-
-
-
 // const startApp = () => {
 //   catchAllData('users', 'rooms');
 //   checkBookings();

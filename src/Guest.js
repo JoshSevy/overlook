@@ -41,7 +41,7 @@ class Guest extends Overlook {
       })
       return sum;
     }, 0)
-    return total;
+    return parseFloat(total.toFixed(2));
   }
 }
 

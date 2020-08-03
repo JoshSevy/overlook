@@ -21,6 +21,10 @@ class Overlook {
     }, []);
     return vacantRooms;
   }
+
+  getRoomInfo(roomNumber) {
+    return this.rooms.find(room => room.number === roomNumber);
+  }
 //Need method to update bookings
 //parent class maybe ? 
 // think of methods all extended classes may need 

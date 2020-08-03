@@ -25,10 +25,10 @@ class Page {
   displayManagerTable(manager) {
     let dailyRevenue = document.querySelector('.manage-revenue');
     let revenueHtml = `
-    <h3>revenue for: ${page.today()}<h3>
-    <h2>${manager.revenueByDate(page.today())}<h2>
-    <h3> Hotel Occupency: <h3>
-    <h2>${manager.percentageOccupied(page.today())}<h2>
+    <h3 class="manage-date">revenue for: ${this.today()}<h3>
+    <h2 class="manage-rev">$${manager.revenueByDate(this.today())}<h2>
+    <h3 class="manage-title"> Hotel Occupency: <h3>
+    <h2 class="manage-occ">${manager.percentageOccupied(this.today())} rooms booked <h2>
     `
     dailyRevenue.innerHTML = revenueHtml;
   }
@@ -42,16 +42,24 @@ class Page {
   }
 
   displayGuestData(guest) {
-    let guestData = document.querySelector('.guest-manage');
-    let guestManageHtml = `
-    <h3> Today: ${this.today()}<h3>
-    <h2>Future Html:<h2>
-    <h3> Past Visits: <h3>
-    <ul><li>${guest.allVisits[3].roomNumber} ${guest.allVisits[3].date}</li></ul>
-    <h2>Total Cost:</h2>
-    <h2>${guest.getTotalCost()}<h2>
+    const guestData = document.querySelector('.guest-manage');
+    const guestManageHtml = `
+    <h2 class="guest-title"> Past Visits: </h2>
+    <ul class="previous-visits"></ul>
+    <h2 class="guest-title">Total Cost:</h2>
+    <h2 class="guest-total">${guest.getTotalCost()}<h2>
     `
     guestData.innerHTML = guestManageHtml;
+  }
+
+  displayGuestVisits(guest) {
+    const visitList = document.querySelector('.previous-visits');
+    let list = ``;
+    guest.allVisits.forEach(visit => {
+      let room = guest.getRoomInfo(visit.roomNumber);
+      list += `<li class="guest-book">${visit.date} ${room.roomType} $${room.costPerNight}</li>`
+    })
+    visitList.insertAdjacentHTML("afterbegin", list);
   }
 
   displayElement(displayArray) {
@@ -78,16 +86,10 @@ class Page {
       let id = login.user.replace(/\D/g, "");
       this.displayGuest();
       let guest = new Guest(rooms, bookings, users[id].id, users[id].name)
-      guest.allBookings(hotelData.bookings);
+      guest.allBookings(bookings);
       this.displayGuestData(guest);
+      this.displayGuestVisits(guest);
     }
-  }
-
-  getUserId(login) {
-    let userLog = login.user;
-    
-    
-    
   }
 
   clearInputForms() {
@@ -106,13 +108,12 @@ class Page {
   today() {
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); 
     var yyyy = today.getFullYear();
 
     today = yyyy + '/' + mm + '/' + dd;
     return today;
   }
-
 }
 
 export default Page;

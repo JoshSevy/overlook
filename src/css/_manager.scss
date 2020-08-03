@@ -49,7 +49,10 @@
 .manage-revenue {
   width: 100%;
   height: 30vh;
-  border: black 3px solid;
+  border: $color-black 3px solid;
+  padding: .5em; 
+  text-transform: uppercase;
+  margin: 1em;
 }
 
 .manage-guest {
@@ -58,4 +61,20 @@
 
 .manage-bookings {
   @extend .manage-revenue;
+}
+
+.manage-date {
+  font-size: 2em;
+}
+
+.manage-occ {
+  font-size: 3em;
+}
+
+.manage-rev {
+  font-size: 3em;
+}
+
+.manage-title {
+  font-size: 2em;
 }
