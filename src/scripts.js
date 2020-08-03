@@ -1,26 +1,9 @@
 import Page from './Page';
 
-
-/* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
-
-// function myFunction() {
-//   var x = document.getElementById("myLinks");
-//   if (x.style.display === "block") {
-//     x.style.display = "none";
-//   } else {
-//     x.style.display = "block";
-//   }
-// }
-
 let apiHead = 'https://fe-apps.herokuapp.com/api/v1/overlook/1904';
 let allData = {};
-const loginData = {};
+const formData = {};
 let page;
-
-// const startApp = () => {
-//   catchAllData('users', 'rooms');
-//   checkBookings();
-// }
 
 const startApp = async () => {
    await fetchData('rooms');
@@ -70,12 +53,23 @@ form.addEventListener("submit", event => {
   event.preventDefault();
   let user = document.getElementById('login-user').value;
   let password = document.getElementById('password').value;
-  loginData['user'] = user.toLowerCase();
-  loginData['password'] = password.toLowerCase();
-  console.log(loginData);
+  formData['user'] = user.toLowerCase();
+  formData['password'] = password.toLowerCase();
+  console.log(formData);
   validateLogin(user, password);
-  page.loginUser(loginData, allData);
+  page.loginUser(formData, allData);
 });
+
+
+let roomSelect = document.querySelector('.search-bookings');
+roomSelect.addEventListener("submit", event => {
+  event.preventDefault();
+  let roomSelection = document.getElementById('room-selector');
+  let dateSelect = document.getElementById('guest-date');
+  formData['roomType'] = roomSelection.value;
+  formData['date'] = dateSelect.value;
+  console.log(formData)
+})
 
 //still need to add in more validation this gets it to 
 // the next iteration though and allow page change

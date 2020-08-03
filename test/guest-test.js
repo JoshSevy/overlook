@@ -5,7 +5,7 @@ const expect = chai.expect;
 
 
 
-describe('Guest', () => {
+describe.only('Guest', () => {
 let user, rooms, bookings, guest;
   beforeEach( () => {
 
@@ -80,7 +80,7 @@ let user, rooms, bookings, guest;
  
     guest = new Guest(rooms, bookings, user.id, user.name);
 
-  })
+  });
 
   it('should be a function', () => {
     expect(guest).to.be.an.instanceOf(Guest);
@@ -88,26 +88,37 @@ let user, rooms, bookings, guest;
 
   it('should be have an id', () => {
     expect(guest.id).to.eql(55);
-  })
+  });
 
   it('should be have a name',()  => {
     expect(guest.name).to.eql('Roger');
-  })
+  });
   
   it('should list all bookings past, present, current, and beyond', () => {
     guest.getGuestBookings(bookings);
     expect(guest.allVisits).to.be.an('array').with.a.lengthOf(4);
-  })
+  });
 
   it('should return total cost of all visits', () => {
     guest.getGuestBookings(bookings);
     expect(guest.getTotalCost(guest.allVisits)).to.eql(835.78)
-  })
+  });
   
 
   it.skip('should return cost of current visit', () => {
     expect(guest.booking).to.eql(491.14)
-  })
+  });
 
+  it.skip('should be able to get all available rooms by date', () => {
+    expect()
+  });
+
+  it.skip('should be able to filter rooms available by date by roomtype', () => {
+    expect()
+  });
+
+  it.skip('should return message to user apologizing if no bookings available', () => {
+    expect()
+  });
 
 });

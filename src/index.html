@@ -92,7 +92,19 @@
             your visit:
           </article>
           <article class="guest-search">
-            available rooms:
+            <h2 class="guest-header"></h2>
+            <form class="search-bookings" action="" id="search-bookings">
+              <label for="guest-date">Dates:</label>
+              <input class="calendar" type="date" id="guest-date" name="date">
+              <label for="room-type">roomtype</label>
+              <select name="room-type" id="room-selector">
+                <option value="all">any available</option>
+                <option value="res-suite">residential suite</option>
+                <option value="suite">suite</option>
+                <option value="single">single room</option>
+              </select>
+              <input type="submit" name="" id="submit-booking">
+            </form>
           </article>
           <article class="guest-manage">
             guest data:

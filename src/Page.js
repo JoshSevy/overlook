@@ -9,7 +9,7 @@ class Page {
     display.innerText = message
   }
 
-  displayManager() {
+  displayManager(manager) {
     let hide = [
       'button-signin', 'button-trips',
       'nav-buttons-bottom', 'guest', 'signin',
@@ -20,7 +20,7 @@ class Page {
     ]
     this.hideElement(hide);
     this.displayElement(display);
-    this.displayManagerTable();
+    this.displayManagerTable(manager);
   }
 
   displayManagerTable(manager) {
@@ -34,14 +34,14 @@ class Page {
     dailyRevenue.innerHTML = revenueHtml;
   }
 
-  displayGuest() {
+  displayGuest(guest) {
     let hide = [
       'button-signin', 'manager', 'main-page', 'signin'];
     let display = ['guest', 'button-logout']
     this.hideElement(hide);
     this.displayElement(display);
-    this.displayGuestData();
-    this.displayGuestVisits();
+    this.displayGuestData(guest);
+    this.displayGuestVisits(guest);
   }
 
   displayGuestData(guest) {
@@ -83,12 +83,13 @@ class Page {
     let bookings = hotelData.bookings;
     if (login.user.includes('manager')) {
       let manager = new Manager(rooms, bookings, users);
-      this.displayManager();
+      this.displayManager(manager);
     } else if (login.user.includes('customer')) {
-      let id = login.user.replace(/\D/g, "");
-      this.displayGuest();
-      let guest = new Guest(rooms, bookings, users[id].id, users[id].name)
-      guest.allBookings(bookings);
+      let id = login.user.replace(/\D/g, "") - 1;
+      let guest = new Guest(rooms, bookings, users[(id)].id, users[id].name)
+      this.displayGuest(guest);
+      guest.getGuestBookings(bookings);
+      console.log(guest.allVisits)
     }
   }
 

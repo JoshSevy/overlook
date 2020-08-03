@@ -5,7 +5,7 @@ const spies = require('chai-spies');
 
 chai.use(spies);
 
-describe.only('Page', () => {
+describe('Page', () => {
   let page, classList;
   beforeEach(() => {
     global.document = {}
