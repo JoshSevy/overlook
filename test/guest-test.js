@@ -113,8 +113,9 @@ let user, rooms, bookings, guest;
     expect(guest.getVacantRooms("2020/02/16")).to.be.an('array').with.a.lengthOf(3)
   });
 
-  it.skip('should be able to filter rooms available by date by roomtype', () => {
-    expect()
+  it('should be able to filter rooms available by date by roomtype', () => {
+    console.log(guest.getRoomsByRoomType('2020/02/16', 'res-suite'));
+    expect(guest.getRoomsByRoomType('2020/02/16')).to.be.an('array');
   });
 
   it.skip('should return message to user apologizing if no bookings available', () => {
