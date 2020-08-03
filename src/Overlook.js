@@ -6,11 +6,11 @@ class Overlook {
     this.bookings = bookings;
   }
   
-  bookingsByDate(date) {
+  allBookingsByDate(date) {
     return this.bookings.filter(book => book.date === date);
   }
 
-  vacantRooms(date) {
+  getVacantRooms(date) {
     let vacantRooms = this.rooms.reduce((vacant, room) => {
       let nonVacant = this.bookings
         .find(book => book.roomNumber === room.number 

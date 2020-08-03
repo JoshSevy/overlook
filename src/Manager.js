@@ -18,7 +18,7 @@ class Manager extends Overlook {
   }
 
   revenueByDate(date) { 
-    let revenue = this.bookingsByDate(date)
+    let revenue = this.allBookingsByDate(date)
     let total = revenue.reduce((sum, booking) => {
       let price = this.rooms
         .find(room => room.number === booking.roomNumber)
@@ -29,7 +29,7 @@ class Manager extends Overlook {
   }
  
   percentageOccupied(date) {
-    let occupied = this.bookingsByDate(date);
+    let occupied = this.allBookingsByDate(date);
     return (occupied.length / this.rooms.length) * 100;
   }
 

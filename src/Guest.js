@@ -43,7 +43,34 @@ class Guest extends Overlook {
     }, 0)
     return parseFloat(total.toFixed(2));
   }
+
+  getRoomsByRoomType(date, selectRoom) {
+    let rooms = this.getVacantRooms(date);
+    let roomType; 
+
+    switch(selectRoom) {
+      case 'res-suite':
+        roomType = 'residential suite';
+        break;
+      case 'suite' :
+        roomType = 'suite';
+        break;
+      case 'single' :
+        roomType = 'single room';
+        break;
+      default :
+       return rooms;
+    }
+
+    if (!roomType === undefined) {
+      return rooms.filter(type => type.roomType === roomType)
+    } else {
+      return rooms;
+    }
+  }
 }
+
+
 
 
 export default Guest;
