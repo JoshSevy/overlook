@@ -9,6 +9,16 @@
 // describe.only('scripts', () => {
 //   let document;
 //   beforeEach(() => {
+
+//     fetchresponse = {
+//       then: (method) => {
+//         method(response)
+//         return response
+//       },
+//       catch: () => {
+//         return response;
+//       }
+//     }
    
 //     document = {}
 //     chai.spy.on(document, ['querySelector', 'querySelectorAll'], () => {
