@@ -20,15 +20,16 @@ class Page {
     ]
     this.hideElement(hide);
     this.displayElement(display);
+    this.displayManagerTable(manager);
   }
 
   displayManagerTable(manager) {
     let dailyRevenue = document.querySelector('.manage-revenue');
     let revenueHtml = `
-    <h3 class="manage-date">revenue for: ${this.today()}<h3>
+    <h3 class="manage-title">revenue for: ${this.today()}<h3>
     <h2 class="manage-rev">$${manager.revenueByDate(this.today())}<h2>
-    <h3 class="manage-title"> Hotel Occupency: <h3>
-    <h2 class="manage-occ">${manager.percentageOccupied(this.today())} rooms booked <h2>
+    <h3 class="manage-title"> Hotel Occupency Total:<h3>
+    <h2 class="manage-occ">${manager.percentageOccupied(this.today())} % <h2>
     `
     dailyRevenue.innerHTML = revenueHtml;
   }
@@ -39,6 +40,8 @@ class Page {
     let display = ['guest', 'button-logout']
     this.hideElement(hide);
     this.displayElement(display);
+    this.displayGuestData(guest);
+    this.displayGuestVisits(guest);
   }
 
   displayGuestData(guest) {
@@ -81,14 +84,11 @@ class Page {
     if (login.user.includes('manager')) {
       let manager = new Manager(rooms, bookings, users);
       this.displayManager();
-      this.displayManagerTable(manager)
     } else if (login.user.includes('customer')) {
       let id = login.user.replace(/\D/g, "");
       this.displayGuest();
       let guest = new Guest(rooms, bookings, users[id].id, users[id].name)
       guest.allBookings(bookings);
-      this.displayGuestData(guest);
-      this.displayGuestVisits(guest);
     }
   }
 

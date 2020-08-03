@@ -53,6 +53,7 @@
   padding: .5em; 
   text-transform: uppercase;
   margin: 1em;
+  text-align: center;
 }
 
 .manage-guest {
@@ -61,10 +62,6 @@
 
 .manage-bookings {
   @extend .manage-revenue;
-}
-
-.manage-date {
-  font-size: 2em;
 }
 
 .manage-occ {
@@ -77,4 +74,5 @@
 
 .manage-title {
   font-size: 2em;
+  padding: .5em;
 }
