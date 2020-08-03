@@ -20,7 +20,7 @@ class Page {
     ]
     this.hideElement(hide);
     this.displayElement(display);
-    this.displayManagerTable(manager);
+    this.displayManagerTable();
   }
 
   displayManagerTable(manager) {
@@ -40,8 +40,8 @@ class Page {
     let display = ['guest', 'button-logout']
     this.hideElement(hide);
     this.displayElement(display);
-    this.displayGuestData(guest);
-    this.displayGuestVisits(guest);
+    this.displayGuestData();
+    this.displayGuestVisits();
   }
 
   displayGuestData(guest) {
@@ -92,18 +92,18 @@ class Page {
     }
   }
 
-  clearInputForms() {
-    let inputs = document.querySelectorAll('input');
-    for (var i = 0; i < inputs.length; i++) {
-      inputs[i].value = ''
-    }
-    this.dateField.classList.add('hidden')
-    const submit = document.getElementById('submit')
-    if (inputs === null) {
-      submit.innerText = `add new info`;
-      submit.id = `new-fitness-entry`;
-    }
-  }
+  // clearInputForms() {
+  //   let inputs = document.querySelectorAll('input');
+  //   for (var i = 0; i < inputs.length; i++) {
+  //     inputs[i].value = ''
+  //   }
+  //   this.dateField.classList.add('hidden')
+  //   const submit = document.getElementById('submit')
+  //   if (inputs === null) {
+  //     submit.innerText = `add new info`;
+  //     submit.id = `new-fitness-entry`;
+  //   }
+  // }
 
   today() {
     var today = new Date();

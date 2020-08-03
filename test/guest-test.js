@@ -5,7 +5,7 @@ const expect = chai.expect;
 
 
 
-describe.only('Guest', () => {
+describe('Guest', () => {
 let user, rooms, bookings, guest;
   beforeEach( () => {
 
@@ -95,12 +95,12 @@ let user, rooms, bookings, guest;
   })
   
   it('should list all bookings past, present, current, and beyond', () => {
-    guest.allBookings(bookings);
+    guest.getGuestBookings(bookings);
     expect(guest.allVisits).to.be.an('array').with.a.lengthOf(4);
   })
 
   it('should return total cost of all visits', () => {
-    guest.allBookings(bookings);
+    guest.getGuestBookings(bookings);
     expect(guest.getTotalCost(guest.allVisits)).to.eql(835.78)
   })
   

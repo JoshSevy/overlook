@@ -6,18 +6,20 @@ const spies = require('chai-spies');
 chai.use(spies);
 
 describe.only('Page', () => {
-  let page;
+  let page, classList;
   beforeEach(() => {
     global.document = {}
-    chai.spy.on(document, ['querySelector', 'querySelectorAll'], () => {
-      return [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }, { id: 7 }]
-    })
+    chai.spy.on(document, ['querySelector', 'querySelectorAll', 'innerText', 'getElementById'], () => {})
+
+    chai.spy.on(classList = {add: () => {'do something'}});
+   
     page = new Page();
     chai.spy.on(Page, [
       'displayManager',
       'displayGuest',
       'displayElements',
-      'hideElements'
+      'hideElements',
+      'displayManagerTable'
     ], () => { })
 
   })
@@ -25,18 +27,37 @@ describe.only('Page', () => {
   afterEach(() => {
     chai.spy.restore();
   });
+
   it('should be an instance of Page', () => {
     expect(page).to.be.an.instanceOf(Page);
   })
 
   it('should spy on displayElement', () => {
-    page.displayGuest();
-    expect('hideElement').to.be.called.by(page.displayGuest());
+    page.displayManager()
+    expect('displayElements').to.have.been.called.with(page.displayManager());
   })
 
   it('should spy on hideElement', () => {
-    page.displayGuest();
-    expect('hideElement').to.be.called(page.displayGuest());
+    page.displayGuest()
+    expect('hideElements').to.have.been.called.with(page.displayGuest());
+  })
+
+  it.skip('should pass at least one test', () => {
+    page.displayManagerTable();
+    expect(document.querySelector).to.be.called(2);
+  })
+
+  it('should do anything but fail', () => {
+    page.changeSystemMessage('')
+    expect(document.getElementById).to.be.called(1);
+  })
+
+  it('', {
+
+  })
+
+  it('should pass at least one test', {
+
   })
   
 
