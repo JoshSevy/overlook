@@ -1,4 +1,8 @@
 @import 'variables';
+@import 'nav-bar';
+@import 'manager';
+@import 'signin';
+@import 'guest';
 
 * {
   box-sizing: border-box;
@@ -11,167 +15,16 @@ html, body {
   font-size: 16px;
 }
 
-.logo-overlook {
-  position: absolute;
+.manage-main {
+  height: 100vh;
+  margin-top: 15vh;
 }
- 
+
+
 @media screen and (max-width: 768px) {
   html, body {
     font-size: 12px;
   }
-}
-
-.nav-buttons-top {
-  background-color: $nav-bar;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  align-items: flex-start;
-  width: 100vw;
-  height: 10vh;
-}
- 
-.button-signin {
-  text-decoration: none;
-  font-size: .875rem;
-  text-transform: uppercase;
-  border-radius: 1.5rem;
-  background-color: $color-white;
-  color: #47BDFF;
-  padding: .7rem .9rem;
-  font-weight: 900;
-  margin: 2vh 2vw 0 0;
-
-  @include button-movement;
-}
-
-.button-trips {
-    @extend .button-signin;
-}
-
-.nav-buttons-bottom {
-  position: absolute;
-  background-color: $nav-bar;
-  margin-bottom: 2vh;
-  width: 100vw;
-  height: 5vh;
-  
-}
-
-.button-find {
-  @extend .button-signin;
-}
-
-.button-info {
-  @extend .button-signin;
-}
-
-.button-features {
-  @extend .button-signin;
-}
- 
-.signin {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  bottom: 0;
-  right: 0;
-  background-color: rgba(8, 8, 8, 0.8);
-  z-index: 2;
-  visibility: hidden;
-  opacity: 0;
-  overflow: hidden;
-  transition: .64s ease-in-out;
-}
-
-.signin-inner {
-  position: relative;
-  bottom: -100vw;
-  right: -100vh;
-  display: flex;
-  align-items: center;
-  max-width: 800px;
-  max-height: 600px;
-  width: 60%;
-  height: 80%;
-  background-color: $color-white;
-  @include popin(32deg, .64s);
-}
-.signin-photo {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  width: 40%;
-  height: 100%;
-  overflow: hidden;
-}
-.signin-photo img {
-  width: auto;
-  height: 100%;
-}
-.signin-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 60%;
-  height: 100%;
-  padding: 2rem;
-}
-
-.signin-text h1 {
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 2rem;
-  text-transform: uppercase;
-  color: $color-black;
-}
-
-.signin-text p {
-  font-size: .875rem;
-  color: $color-grey;
-  line-height: 1.5;
-}
- 
-.signin-text a {
-	text-decoration: none;
-  color:  $nav-bar;
-  justify-content: flex-end;
-  display: flex;
-  font-size: 1.5rem;
-  font-weight: 600;
-
-}
-
-.signin:target {
-  visibility: visible;
-  opacity: 1;
-}
-
-.signin:target .signin-inner {
-  bottom: 0;
-  right: 0;
-  transform: rotate(0);
-}
-
-.close-signin {
-  position: absolute;
-  right: -1rem;
-  top: -1rem;
-  width: 3rem;
-  height: 3rem;
-  font-size: .875rem;
-  font-weight: 300;
-  border-radius: 100%;
-  background-color: $nav-bar;
-  z-index: 4;
-  color: $color-white;
-  line-height: 3rem;
-  text-align: center;
-  cursor: pointer;
-  text-decoration: none;
 }
 //HAMBURGER MENU
 // /* Style the navigation menu */

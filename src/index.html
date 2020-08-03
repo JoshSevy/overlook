@@ -7,38 +7,36 @@
 </head>
 <body>
   <section class="main-nav">
-    <article class="topnav hidden">
-      <a href="#home" class="active">Logo</a>
-      <!-- Navigation links (hidden by default) -->
-      <article id="myLinks">
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
-      </article>
-      <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
-      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-        <i class="fa fa-bars"></i>
-      </a>
     </article> 
-    <article class="logo-overlook"><img src="./images/overlook-logo.jpg" alt="overlook hotel logo" /></article>
-    <article class="nav-buttons-top ">
+    <article class="logo-overlook">
+      <a href="#">
+      <img class="logo" src="./images/overlook.png" alt="overlook hotel logo" />
+      </a>
+    </article>
+    <article class="nav-buttons-top">
       <a class="button-trips"href="#">my trips</a>
       <a class="button-signin" href="#signin">sign in</a>
+      <a class="button-logout hidden" href="#">log out</a>
       <article class="signin" id="signin">
         <article class="signin-inner">
-          <div class="signin-photo">
+          <article class="signin-photo">
             <img
-              src="./images/amenities/lobby-sky.jpg"
+              src="./images/lobby-sky.jpg"
               alt="inside photo looking up into a narrow window filled tower">
-          </div>
+          </article>
           <article class="signin-text">
-            <h1>overlook login</h1>
-            <p>welcome to the overlook hotel</p>
+            <h2 class="login-header">welcome to the overlook hotel</h2>
+            <form class="login-form" action="" id="login-form" method="GET">
+              <h3>overlook login</h3>
             <label for="login">User Login:</label>
-            <input class="login-user" type="text" name="login" id="">
+            <input class="login-user" type="text" name="login" id="login-user" required />
             <label for="password">Password:</label>
-            <input class="login-password"type="password" name="password" id="">
-            <a class="login-button" href="#">submit</a>
+            <input class="login-password" type="password" name="password" id="password" required />
+            <article class="signin-send">
+              <button type="submit" value="Login" id="submit" />
+            <a for="signin-text" class="login-button">submit</a>
+            </article>
+            </form>
           </article>
           <a class="close-signin" href="#">X</a>
         </article>
@@ -51,15 +49,62 @@
     </article>
   </nav>
   </section>
-<main>
-  <section>
-    <article>
-    </article>
-  </section>
-</main>
+  <main>
+    <section class="main-page hidden">
+      <article>photo caro</article>
+      <article>photo caro</article>
+      <article>photo caro</article>
+      <article>photo caro</article>
+      <article>photo caro</article>
+      <article>photo caro</article>
+      <article>photo caro</article>
+      <article>photo caro</article>
+    </section>
+    <section class="manager hidden">
+      <section class="manage-info">
+        <h2>Manager Screen</h2>
+          <article class="manage-revenue">
+            <h3>revenue for: date</h3>
+          </article>
+          <article class="manage-bookings"> 
+            <h3>available rooms:</h3>
+            <form class="search-form" action="" id="search-data">
+              <label for="date">Dates:</label>
+              <input class="calendar" type="date" id="date" name="date">
+              <input type="submit" name="" id="">
+            </form>
+          </article>
+          <article class="manage-guest"> 
+            <h3>guest data:</h3>
+          <form class="manage-search">
+            <label for="search">Search:</label>
+            <input type="search" id="search-bar" name="search" placeholder="Search for Guest....">
+            <input class="search-button" type="submit">
+          </form>
+          </article>
+      </section>
+    </section>
+    <section class="guest">
+      <section class="guest-info">
+        <h2 class="guest-header">Hello</h2>
+        <section>
+          <article class="guest-visit">
+            your visit:
+          </article>
+          <article class="guest-search">
+            available rooms:
+          </article>
+          <article class="guest-manage">
+            guest data:
+            <ul class="previous-visits">
+            </ul>
+          </article>
+        </section>
+      </section>
+    </section>
+  </main>
+<footer></footer>
 </body>
 </html>
-
-
 
 

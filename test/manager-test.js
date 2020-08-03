@@ -1,11 +1,13 @@
 import chai from 'chai';
+import Manager from '../src/Manager'
 import Overlook from '../src/Overlook';
 const expect = chai.expect;
 
 
-describe('Overlook', function () {
-  let users, rooms, bookings, overlook;
-  beforeEach(() => {
+describe('Manager', function () {
+  let users, rooms, bookings, overlook, manager;
+
+  before(() => {
 
     users = [
       {
@@ -73,7 +75,7 @@ describe('Overlook', function () {
         "costPerNight": 477.38
       },
       {
-        "number": 3,
+        "number": 24,
         "roomType": "single room",
         "bidet": false,
         "bedSize": "king",
@@ -81,7 +83,7 @@ describe('Overlook', function () {
         "costPerNight": 491.14
       },
       {
-        "number": 4,
+        "number": 15,
         "roomType": "single room",
         "bidet": false,
         "bedSize": "queen",
@@ -89,26 +91,28 @@ describe('Overlook', function () {
         "costPerNight": 429.44
       }]
 
-    overlook = new Overlook(users, rooms, bookings);
+      
+    manager = new Manager(rooms, bookings, users);
+
   })
-  it('should be an instance of Overlook', () => {
+  it.skip('should be an instance of Overlook', () => {
     expect(overlook).to.be.an.instanceOf(Overlook);
   });
 
-  it('should have an array of all guest', () => {
-    expect(overlook.guests).to.be.an('array').with.a.lengthOf(4);
+  it('should be an instance of Manager', () => {
+    expect(manager).to.be.an.instanceOf(Manager);
   })
 
-  it('should have an array of all rooms', () => {
-    expect(overlook.rooms).to.be.an('array').with.a.lengthOf(4);
+  it('should inherit users from Overlook', () => {
+    expect(manager.guests).to.be.an('array').with.a.lengthOf(4);
   })
 
-  it('should have an array of all hotel bookings', () => {
-    expect(overlook.bookings).to.be.an('array').with.a.lengthOf(4);
+  it('should return revenue by date', () => {
+    expect(manager.revenueByDate("2020/01/10")).eql(358.4);
   })
 
-  it('should be able to return all vacant rooms for a date', () => {
-    expect(overlook.vacantRooms("2020/01/10")).to.be.an('array').with.a.lengthOf(3);
+  it('should return hotel occupency by date', () => {
+    expect(manager.percentageOccupied("2020/02/16")).to.eql(25)
   })
 
   it.skip('should show current booking', () => {

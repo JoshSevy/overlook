@@ -1,0 +1,62 @@
+.logo-overlook {
+  position: absolute;
+}
+ 
+.logo {
+  height: 10vh;
+  position: relative;
+}
+
+.nav-buttons-top {
+  background-color: $nav-bar;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  align-items: flex-start;
+  width: 100vw;
+  height: 10vh;
+}
+ 
+.button-signin {
+  text-decoration: none;
+  font-size: .875rem;
+  text-transform: uppercase;
+  border-radius: 1.5rem;
+  background-color: $color-white;
+  color: #47BDFF;
+  padding: .7rem .9rem;
+  font-weight: 900;
+  margin: 2vh 2vw 0 0;
+
+  @include button-movement;
+}
+
+.button-logout {
+  @extend .button-signin;
+}
+
+.button-trips {
+    @extend .button-signin;
+}
+
+.nav-buttons-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 2vh;
+  width: 100vw;
+  height: 5vh;
+  
+}
+
+.button-find {
+  @extend .button-signin;
+}
+
+.button-info {
+  @extend .button-signin;
+}
+
+.button-features {
+  @extend .button-signin;
+}

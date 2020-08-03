@@ -1,29 +1,18 @@
 import chai from 'chai';
+import Guest from '../src/Guest';
 import Overlook from '../src/Overlook';
 const expect = chai.expect;
 
 
-describe('Overlook', function () {
-  let users, rooms, bookings, overlook;
-  beforeEach(() => {
 
-    users = [
-      {
-        "id": 1,
-        "name": "Leatha Ullrich"
-      },
-      {
-        "id": 2,
-        "name": "Rocio Schuster"
-      },
-      {
-        "id": 3,
-        "name": "Kelvin Schiller"
-      },
-      {
-        "id": 4,
-        "name": "Kennedi Emard"
-      }];
+describe.only('Guest', () => {
+let user, rooms, bookings, guest;
+  beforeEach( () => {
+
+    user = {
+      "id": 55,
+      "name": "Roger"
+    }
 
     bookings = [
       {
@@ -88,31 +77,37 @@ describe('Overlook', function () {
         "numBeds": 15,
         "costPerNight": 429.44
       }]
+ 
+    guest = new Guest(rooms, bookings, user.id, user.name);
 
-    overlook = new Overlook(users, rooms, bookings);
   })
-  it('should be an instance of Overlook', () => {
-    expect(overlook).to.be.an.instanceOf(Overlook);
+
+  it('should be a function', () => {
+    expect(guest).to.be.an.instanceOf(Guest);
   });
 
-  it('should have an array of all guest', () => {
-    expect(overlook.guests).to.be.an('array').with.a.lengthOf(4);
+  it('should be have an id', () => {
+    expect(guest.id).to.eql(55);
   })
 
-  it('should have an array of all rooms', () => {
-    expect(overlook.rooms).to.be.an('array').with.a.lengthOf(4);
+  it('should be have a name',()  => {
+    expect(guest.name).to.eql('Roger');
+  })
+  
+  it('should list all bookings past, present, current, and beyond', () => {
+    guest.allBookings(bookings);
+    expect(guest.allVisits).to.be.an('array').with.a.lengthOf(4);
   })
 
-  it('should have an array of all hotel bookings', () => {
-    expect(overlook.bookings).to.be.an('array').with.a.lengthOf(4);
+  it('should return total cost of all visits', () => {
+    guest.allBookings(bookings);
+    expect(guest.getTotalCost(guest.allVisits)).to.eql(835.78)
+  })
+  
+
+  it.skip('should return cost of current visit', () => {
+    expect(guest.booking).to.eql(491.14)
   })
 
-  it('should be able to return all vacant rooms for a date', () => {
-    expect(overlook.vacantRooms("2020/01/10")).to.be.an('array').with.a.lengthOf(3);
-  })
-
-  it.skip('should show current booking', () => {
-
-  })
 
 });
