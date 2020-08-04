@@ -71,9 +71,17 @@ class Page {
     let list = ``;
     let rooms = this.guest.getRoomsByRoomType(date, roomType);
     rooms.forEach(room => {
-      list += `<button class="book-room" id="book-room" value="${room.number}">room number: ${room.number} room type: ${room.roomType} cost per night: ${room.costPerNight} </button>`
+      list += `
+      <article class="room-card" id="${room.number}">
+      <h3>room:${room.number}</h3>
+      <img src="./images/working-room.jpg" alt="modern grey sleek hotel room" />
+      <p>${room.roomType}</p>
+      <p>$${room.costPerNight}</p>
+      <button type="submit">Book Now</button>
+      </article>
+     `
     })
-    vacantRooms.insertAdjacentHTML("afterbegin", list);
+    vacantRooms.innerHTML = list;
   }
 
   displayHome() {

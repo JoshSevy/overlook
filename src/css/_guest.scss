@@ -3,7 +3,7 @@
   justify-content: center;
 
   &-info{
-  color: black;
+    color: $color-black;
   }
 
   &-header {
@@ -12,16 +12,16 @@
 
   &-visit {
     width: 100%;
-    border: $nav-bar solid 4px;
+    border: $border-blue;
   }
 
   &-search {
+    border: $border-blue;
     width: 100%;
-    border: $nav-bar solid 4px;
   }
 
   &-manage {
-    border: $nav-bar solid 4px;
+    border: $border-blue;
   }
 
   &-total {
@@ -30,8 +30,8 @@
   }
 
   &-title {
-  font-size: 1.2em;
-  text-align: center;
+    font-size: 1.2em;
+    text-align: center;
   }
 
   &-book {
@@ -41,21 +41,38 @@
   }
 }
 
-
-
 .previous-visits {
-  background-color: lightcyan;
+  background-color: $color-cyan;
   margin: 2em;
+  height: 20vh;
+  overflow: scroll;
 }
 
 .vacant-rooms {
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
 
   & > button {
-    background-color: lightcyan;
+    background-color: $color-cyan;
+  }
+}
+
+.room-card {
+  border: $border-blue;
+  padding: 5%;
+  width: 40vw;
+  text-transform: capitalize;
+  text-align: center;
+  margin: 1em;
+
+
+  & > img {
+    width: 100%;
+  }
+
+  & > h3 {
+    text-transform: uppercase;
   }
 }
 

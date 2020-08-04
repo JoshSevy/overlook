@@ -1,0 +1,10 @@
+@media screen and (max-width: 768px) {
+  html, body {
+    font-size: 10px;
+  }
+
+  .signin-photo {
+    visibility: hidden;
+    position: fixed;
+  }
+}
