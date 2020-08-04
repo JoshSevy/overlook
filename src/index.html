@@ -9,14 +9,14 @@
   <section class="main-nav">
     </article> 
     <article class="logo-overlook">
-      <a href="#">
+      <a class="btn" id="go-home" href="#">
       <img class="logo" src="./images/overlook.png" alt="overlook hotel logo" />
       </a>
     </article>
     <article class="nav-buttons-top">
-      <a class="button-trips"href="">my trips</a>
-      <a class="button-signin" href="#signin">sign in</a>
-      <a class="button-logout hidden" href="#">log out</a>
+      <a class="btn button-trips hidden"href="">my trips</a>
+      <a class="btn button-signin" href="#signin" id="signin">sign in</a>
+      <a class="btn button-logout hidden" href="#" id="logout">log out</a>
       <article class="signin" id="signin">
         <article class="signin-inner">
           <article class="signin-photo">
@@ -28,24 +28,24 @@
             <h2 class="login-header">welcome to the overlook hotel</h2>
             <form class="login-form" action="" id="login-form" method="GET">
               <h3>overlook login</h3>
-            <label for="login">User Login:</label>
-            <input class="login-user" type="text" name="login" id="login-user" required />
-            <label for="password">Password:</label>
-            <input class="login-password" type="password" name="password" id="password" required />
-            <article class="signin-send">
-              <button type="submit" value="Login" id="submit" />
-            <a for="signin-text" class="login-button">submit</a>
-            </article>
+              <label for="login">User Login:</label>
+              <input class="login-user" type="text" name="login" id="login-user" required />
+              <label for="password">Password:</label>
+              <input class="login-password" type="password" name="password" id="password" required />
+              <article class="signin-send">
+                <button type="submit" value="submit" id="submit" />
+              <a for="signin-text" class="login-button">submit</a>
+              </article>
             </form>
           </article>
-          <a class="close-signin" href="#">X</a>
+          <a class="btn close-signin" href="#">X</a>
         </article>
       </article>
     </article>
     <article class="nav-buttons-bottom">
-      <a class="button-find" href="#">Find and Reserve</a>
-      <a class="button-info" href="#">Resort Info</a>
-      <a class="button-features" href="#">Amenities</a>
+      <a class="btn button-find" href="#">Find and Reserve</a>
+      <a class="btn button-info" href="#">Resort Info</a>
+      <a class="btn button-features" href="#">Amenities</a>
     </article>
   </nav>
   </section>
@@ -56,8 +56,8 @@
         alt="industrious coffee shop/ coworking space, concrete walls with message on the wall - punch today in the face">
       </article>
       <article class="main-info">
-        <h3>dhe overlook hotel</h3>
-        <p>here at the overlook hotel, you are our top priority. With the current status of the world we have given you full access to the facility without the need to social distance. each room is actually a whole hotel, with a lobby, full bar, work center, and many more things to explore. Just beware its easy to lose your head while staying at the overlook. we hope you enjoy your visit. </p>
+        <h3>the overlook hotel</h3>
+        <p>here at the overlook hotel, you are our top priority. With the current status of the world, we are giving you full access to the facility without the need to social distance. each room is actually a whole hotel, with a lobby, full bar, work center, and many more things to explore. Just beware its easy to lose your head while staying at the overlook hotel. we hope you enjoy your visit. </p>
       </article>
     </section>
     <section class="manager hidden">
@@ -95,15 +95,16 @@
             <h2 class="guest-header"></h2>
             <form class="search-bookings" action="" id="search-bookings">
               <label for="guest-date">Dates:</label>
-              <input class="calendar" type="date" id="guest-date" name="date">
+              <input class="calendar-booking" type="date" id="guest-date" name="date" min="today">
               <label for="room-type">roomtype</label>
               <select name="room-type" id="room-selector">
-                <option value="all">any available</option>
-                <option value="res-suite">residential suite</option>
-                <option value="suite">suite</option>
-                <option value="single">single room</option>
+                <option value="all" label="all rooms">any available</option>
+                <option value="res-suite" label="residential suite">residential suite</option>
+                <option value="jr-suite" label="junior suite">junior suite</option>
+                <option value="suite" label="suite">suite</option>
+                <option value="single" label="single room">single room</option>
               </select>
-              <input type="submit" name="" id="submit-booking">
+              <input type="submit" id="submit-booking">
             </form>
             <ul class="vacant-rooms">
             </ul>

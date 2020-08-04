@@ -17,8 +17,8 @@ class Page {
     let display = [
       'manager', 'button-logout'
     ]
-    this.hideElement(hide);
-    this.displayElement(display);
+    this.hideElements(hide);
+    this.displayElements(display);
     this.displayManagerTable(manager);
   }
 
@@ -37,8 +37,8 @@ class Page {
     let hide = [
       'button-signin', 'manager', 'main-page', 'signin'];
     let display = ['guest', 'button-logout']
-    this.hideElement(hide);
-    this.displayElement(display);
+    this.hideElements(hide);
+    this.displayElements(display);
     this.displayGuestData();
     this.displayGuestVisits();
   }
@@ -65,22 +65,31 @@ class Page {
   }
 
   displayVacantRooms(date, roomType) {
+    const calendar = document.querySelector('.calendar-booking');
+    calendar.setAttribute("min", this.dateCalenderFormat(this.today()))
     const vacantRooms = document.querySelector('.vacant-rooms');
     let list = ``;
     let rooms = this.guest.getRoomsByRoomType(date, roomType);
     rooms.forEach(room => {
-      list += `<li value="${room.number}" class="available-room">room number: ${room.number} room type: ${room.roomType} cost per night: ${room.costPerNight}</li>`
+      list += `<button class="book-room" id="book-room" value="${room.number}">room number: ${room.number} room type: ${room.roomType} cost per night: ${room.costPerNight} </button>`
     })
     vacantRooms.insertAdjacentHTML("afterbegin", list);
   }
 
-  displayElement(displayArray) {
+  displayHome() {
+    const display = ['main-page', 'button-signin', 'signin'];
+    const hide = ['guest', 'manager', 'button-logout'];
+    this.displayElements(display);
+    this.hideElements(hide);
+  }
+
+  displayElements(displayArray) {
     displayArray.forEach(className => {
       document.querySelector(`.${className}`).classList.remove('hidden');
     })
   }
 
-  hideElement(hideArray) {
+  hideElements(hideArray) {
     hideArray.forEach(className => {
       document.querySelector(`.${className}`).classList.add('hidden');
     })
@@ -101,6 +110,10 @@ class Page {
     }
   }
 
+  logoutUser() {
+
+  }
+
   today() {
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -114,6 +127,11 @@ class Page {
   dateJsonFormat(date) {
     let dateFormat = date.replace('-', '/')
     return dateFormat.replace('-', '/')
+  }
+
+  dateCalenderFormat(date) {
+    let dateFormat = date.replace('/', '-')
+    return dateFormat.replace('/', '-')
   }
 
   displayDateFormat(date) {

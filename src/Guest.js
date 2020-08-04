@@ -41,6 +41,9 @@ class Guest extends Overlook {
     case 'res-suite':
       rooms = roomSelect(rooms, "residential suite");
       break;
+    case 'jr-suite':
+      rooms = roomSelect(rooms, "junior suite");
+      break;  
     case 'suite' :
       rooms = roomSelect(rooms, "suite");
       break;
