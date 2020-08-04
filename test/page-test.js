@@ -1,65 +1,46 @@
-import chai from 'chai';
+import chai, { spy } from 'chai';
 import Page from '../src/Page';
 const expect = chai.expect;
 const spies = require('chai-spies');
+let page = new Page();
 
 chai.use(spies);
 
 describe('Page', () => {
-  let page, classList;
+  
+  let classList;
   beforeEach(() => {
+
     global.document = {}
-    chai.spy.on(document, ['querySelector', 'querySelectorAll', 'innerText', 'getElementById'], () => {})
+    chai.spy.on(document, ['querySelector', 'querySelectorAll', 'innerText', 'getElementById',  'classList', 'revenueByDate'], () => {})
 
-    chai.spy.on(classList = {add: () => {'do something'}});
-   
-    page = new Page();
-    chai.spy.on(Page, [
-      'displayManager',
-      'displayGuest',
-      'displayElements',
-      'hideElements',
-      'displayManagerTable'
-    ], () => { })
+    
 
-  })
-
-  afterEach(() => {
-    chai.spy.restore();
   });
 
   it('should be an instance of Page', () => {
     expect(page).to.be.an.instanceOf(Page);
   })
 
-  it('should spy on displayElement', () => {
-    page.displayManager()
-    expect('displayElements').to.have.been.called.with(page.displayManager());
+  it
+
+  it.skip('should spy on hideElement', () => {
+    expect().to.have.been.called.with(page.displayGuest());
   })
 
-  it('should spy on hideElement', () => {
-    page.displayGuest()
-    expect('hideElements').to.have.been.called.with(page.displayGuest());
+  it('spy on loginUser', () => {
+    expect('querySelector').to.be.called(2);
   })
 
-  it.skip('should pass at least one test', () => {
-    page.displayManagerTable();
-    expect(document.querySelector).to.be.called(2);
+  it('should change date format for json post date', () => {
+    expect(page.dateJsonFormat('2021-05-22')).to.eql('2021/05/22');
   })
 
-  it('should do anything but fail', () => {
-    page.changeSystemMessage('')
-    expect(document.getElementById).to.be.called(1);
+  it('should change date format for json post date', () => {
+    expect(page.dateJsonFormat('05-22-2021')).to.eql('05/22/2021');
   })
 
-  it('', {
-
+  it('should change date format for display date', () => {
+    expect(page.displayDateFormat('2021/05/22')).to.eql('05-22-2021');
   })
-
-  it('should pass at least one test', {
-
-  })
-  
-
-
 })

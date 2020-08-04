@@ -1,11 +1,8 @@
 import chai from 'chai';
 import Guest from '../src/Guest';
-import Overlook from '../src/Overlook';
 const expect = chai.expect;
 
-
-
-describe.only('Guest', () => {
+describe('Guest', () => {
 let user, rooms, bookings, guest;
   beforeEach( () => {
 

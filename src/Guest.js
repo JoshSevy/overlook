@@ -1,18 +1,4 @@
-//ITERATION 2 GUEST NEEDS:
 import Overlook from './Overlook';
-//SHOULD SEE A DASHBOARD THAT SHOWS:
-
-//ALL ROOM BOOKINGS I HAVE MADE
-
-//TOTAL AMOUNT SPENT ON ROOMS
-
-//need to make an instance of guest at login matching users data from api
-// need to also load bookings at loadin to be able to compare data for guest
-// or a way to reach out and get bookings fetch
-// keep bookings fetch in scripts or main file and on click fetch data
-// how to pause to allow load like a travel site, may not need since data so much smaller
-
-//methods are for through iteration 2
 
 class Guest extends Overlook {
   constructor(rooms, bookings, id, name) {
@@ -42,10 +28,6 @@ class Guest extends Overlook {
       return sum;
     }, 0)
     return parseFloat(total.toFixed(2));
-  }
-
-  returnNoVacancy() {
-
   }
 
   getRoomsByRoomType(date, selectRoom = '') {

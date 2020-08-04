@@ -1,38 +1,46 @@
-// import chai from 'chai';
-// import '../src/scripts';
-// import Page from '../src/Page';
-// const expect = chai.expect;
-// const spies = require('chai-spies');
+import chai from 'chai';
+const expect = chai.expect;
+const spies = require('chai-spies');
 
-// chai.use(spies);
+chai.use(spies);
 
-// describe.only('scripts', () => {
-//   let document;
-//   beforeEach(() => {
+describe('scripts', () => {
+  global.document = {};
+  let checkFetch;
+  beforeEach(() => {
 
-//     fetchresponse = {
-//       then: (method) => {
-//         method(response)
-//         return response
-//       },
-//       catch: () => {
-//         return response;
-//       }
-//     }
    
-//     document = {}
-//     chai.spy.on(document, ['querySelector', 'querySelectorAll'], () => {
-//       return [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }, { id: 7 }]
-//     })
+   
+    document = {}
+    chai.spy.on(document, ['querySelector', 'querySelectorAll'], () => { })
+
+
+    checkFetch = () => {
+      let fakethen = [
+        { "room": 22, "cost": 2900 },
+        { "room": 23, "cost": 29 },
+        { "room": 24, "cost": 29000 }
+      ]
+      let rooms;
+      let fakeJson = rooms;
+      rooms = [
+        { room: 22, cost: 2900 },
+        { room: 23, cost: 29 },
+        { room: 24, cost: 29000 }
+      ]
+      return rooms;
+    }
     
-//   })
+  })
 
-//   afterEach(() => {
-//     chai.spy.restore();
-//   })
-
-//   it('should to a thing', {
-
-//   });
-
-// })
+  it('mock a fetch GET', () => {
+    expect(checkFetch).to.be.a('function');
+    // to.eql(
+    // [
+    //   { room: 22, cost: 2900 },
+    //   { room: 23, cost: 29 },
+    //   { room: 24, cost: 29000 }
+    // ]);.
+  });
+})
+ 
