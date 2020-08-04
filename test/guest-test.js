@@ -127,8 +127,8 @@ let user, rooms, bookings, guest;
     expect(guest.getRoomsByRoomType('2020/02/16', 2)).to.be.an('array').with.a.lengthOf(3);
   });
 
-  //Need to make all rooms booked this day 
-  it.skip('should return message to user apologizing if no bookings available', () => {
+  //Need to make all rooms booked this day to pass
+  it('should return message to user apologizing if no bookings available', () => {
     expect(guest.getVacantRooms('2020/03/17')).to.be.a('string').eql.to('désolé, tout est réservé pour ce jour')
   });
 

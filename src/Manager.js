@@ -36,19 +36,6 @@ class Manager extends Overlook {
   searchGuestByName() {
     
   }
-
-
-  // getUserInfo()
-
-  //iteration 3 focus on getting 2 done and psudocode and write testing afterward
-
-
-  // makeBooking()
-// iteration 3 only a manager can post a booking
-
-  // deleteBooking()
-// iteration 3 only a manager can remove a booking 
-// look into sending a delete request
 }
 
 

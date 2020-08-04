@@ -89,8 +89,21 @@ describe('Overlook', function () {
     expect(overlook.getVacantRooms("2020/02/16")).to.be.an('array').with.a.lengthOf(3);
   })
 
-  it.skip('should show current booking', () => {
+  it('should return room data from room number', () => {
+    expect(overlook.getRoomInfo(4)).to.eql({
+      "number": 4,
+      "roomType": "single room",
+      "bidet": false,
+      "bedSize": "queen",
+      "numBeds": 15,
+      "costPerNight": 429.44
+    })
+  })
 
+  it('should return room data from room number', () => {
+    expect(overlook.getRoomInfo(666)).to.eql(
+      'No room exists with this number'
+    )
   })
 
 });

@@ -19,7 +19,7 @@ class Page {
     ]
     this.hideElements(hide);
     this.displayElements(display);
-    this.displayManagerTable(manager);
+    this.displayManagerTable();
   }
 
   displayManagerTable() {
@@ -99,7 +99,6 @@ class Page {
     let rooms = hotelData.rooms;
     let users = hotelData.users;
     let bookings = hotelData.bookings;
-    let goToPage = document.querySelector('.login-button');
     if (login.user.includes('manager')) {
       this.manager = new Manager(rooms, bookings, users);
       this.displayManager();

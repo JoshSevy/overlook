@@ -1,5 +1,3 @@
-//Parent Class for Overlook
-
 class Overlook {
   constructor(rooms, bookings) {
     this.rooms = rooms;
@@ -24,19 +22,11 @@ class Overlook {
   }
 
   getRoomInfo(roomNumber) {
-    return this.rooms.find(room => room.number === roomNumber);
+    let room = this.rooms.find(room => room.number === roomNumber);
+    let message = 'No room exists with this number';
+    return (room !== undefined) ? room : message;
+    
   }
-//Need method to update bookings
-//parent class maybe ? 
-// think of methods all extended classes may need 
-// design class tree for these extends
-
-
-//need method that fetch's data for booking in api
-  
-
-  //need to create a login method that fetchs user data from api
 }
-
 
 export default Overlook;
