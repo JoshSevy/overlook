@@ -85,11 +85,11 @@ class Page {
       let manager = new Manager(rooms, bookings, users);
       this.displayManager(manager);
     } else if (login.user.includes('customer')) {
-      let id = login.user.replace(/\D/g, "") - 1;
-      let guest = new Guest(rooms, bookings, users[(id)].id, users[id].name)
-      this.displayGuest(guest);
+      let id = login.user.replace(/\D/g, "");
+      let guest = new Guest(rooms, bookings, users[id].id, users[id].name)
       guest.getGuestBookings(bookings);
-      console.log(guest.allVisits)
+      this.displayGuest(guest);
+      
     }
   }
 

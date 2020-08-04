@@ -44,8 +44,13 @@ class Guest extends Overlook {
     return parseFloat(total.toFixed(2));
   }
 
+  returnNoVacancy() {
+
+  }
+
   getRoomsByRoomType(date, selectRoom = '') {
     let rooms = this.getVacantRooms(date);
+    let message = 'we are so so so so so so sorry, no rooms of that type availiable, if no bookings available please visit our sister hotel, bates motel'
     let roomSelect =  (rooms, roomType) => {
       return rooms.filter(room => room.roomType === roomType)
     };
@@ -63,8 +68,9 @@ class Guest extends Overlook {
     default :
       return rooms;
     }
-    return rooms;
+    return (rooms.length <= 0 ? message : rooms);
   }
+
 }
 
 

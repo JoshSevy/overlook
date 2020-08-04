@@ -114,12 +114,25 @@ let user, rooms, bookings, guest;
   });
 
   it('should be able to filter rooms available by date by roomtype', () => {
-    console.log(guest.getRoomsByRoomType('2020/02/16', 'res-suite'));
-    expect(guest.getRoomsByRoomType('2020/02/16')).to.be.an('array');
+ 
+    expect(guest.getRoomsByRoomType('2020/02/16', 'res-suite')).to.be.an('array').with.a.lengthOf(1);
   });
 
+  it('should return all roomsType for date if selection is not made', () => {
+    expect(guest.getRoomsByRoomType('2020/02/16')).to.be.an('array').with.a.lengthOf(3);
+  });
+
+  it('should return sorry if no rooms of that type are available', () => {
+    expect(guest.getRoomsByRoomType('2020/02/16', 'suite')).to.be.a('string');
+  });
+
+  it('should return all rooms if data isnt of correct type', () => {
+    expect(guest.getRoomsByRoomType('2020/02/16', 2)).to.be.an('array').with.a.lengthOf(3);
+  });
+
+  //Need to make all rooms booked this day 
   it.skip('should return message to user apologizing if no bookings available', () => {
-    expect()
+    expect(guest.getVacantRooms('2020/03/17')).to.be.a('string').eql.to('désolé, tout est réservé pour ce jour')
   });
 
 });
