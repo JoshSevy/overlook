@@ -7,24 +7,6 @@ describe('Overlook', function () {
   let users, rooms, bookings, overlook;
   beforeEach(() => {
 
-    users = [
-      {
-        "id": 1,
-        "name": "Leatha Ullrich"
-      },
-      {
-        "id": 2,
-        "name": "Rocio Schuster"
-      },
-      {
-        "id": 3,
-        "name": "Kelvin Schiller"
-      },
-      {
-        "id": 4,
-        "name": "Kennedi Emard"
-      }];
-
     bookings = [
       {
         "id": "5fwrgu4i7k55hl6sz",
@@ -89,15 +71,11 @@ describe('Overlook', function () {
         "costPerNight": 429.44
       }]
 
-    overlook = new Overlook(users, rooms, bookings);
+    overlook = new Overlook(rooms, bookings);
   })
   it('should be an instance of Overlook', () => {
     expect(overlook).to.be.an.instanceOf(Overlook);
   });
-
-  it('should have an array of all guest', () => {
-    expect(overlook.guests).to.be.an('array').with.a.lengthOf(4);
-  })
 
   it('should have an array of all rooms', () => {
     expect(overlook.rooms).to.be.an('array').with.a.lengthOf(4);
@@ -108,7 +86,7 @@ describe('Overlook', function () {
   })
 
   it('should be able to return all vacant rooms for a date', () => {
-    expect(overlook.vacantRooms("2020/01/10")).to.be.an('array').with.a.lengthOf(3);
+    expect(overlook.getVacantRooms("2020/02/16")).to.be.an('array').with.a.lengthOf(3);
   })
 
   it.skip('should show current booking', () => {

@@ -23,7 +23,7 @@
   text-transform: uppercase;
   border-radius: 1.5rem;
   background-color: $color-white;
-  color: #47BDFF;
+  color: $color-black;
   padding: .7rem .9rem;
   font-weight: 900;
   margin: 2vh 2vw 0 0;
@@ -33,10 +33,6 @@
 
 .button-logout {
   @extend .button-signin;
-}
-
-.button-trips {
-    @extend .button-signin;
 }
 
 .nav-buttons-bottom {
@@ -49,6 +45,9 @@
   
 }
 
+
+
+// Future Iteration during break
 .button-find {
   @extend .button-signin;
 }
@@ -59,4 +58,8 @@
 
 .button-features {
   @extend .button-signin;
+}
+
+.button-trips {
+    @extend .button-signin;
 }

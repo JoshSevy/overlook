@@ -1,11 +1,8 @@
 import chai from 'chai';
 import Guest from '../src/Guest';
-import Overlook from '../src/Overlook';
 const expect = chai.expect;
 
-
-
-describe.only('Guest', () => {
+describe('Guest', () => {
 let user, rooms, bookings, guest;
   beforeEach( () => {
 
@@ -80,7 +77,7 @@ let user, rooms, bookings, guest;
  
     guest = new Guest(rooms, bookings, user.id, user.name);
 
-  })
+  });
 
   it('should be a function', () => {
     expect(guest).to.be.an.instanceOf(Guest);
@@ -88,26 +85,51 @@ let user, rooms, bookings, guest;
 
   it('should be have an id', () => {
     expect(guest.id).to.eql(55);
-  })
+  });
 
   it('should be have a name',()  => {
     expect(guest.name).to.eql('Roger');
-  })
+  });
   
   it('should list all bookings past, present, current, and beyond', () => {
-    guest.allBookings(bookings);
+    guest.getGuestBookings(bookings);
     expect(guest.allVisits).to.be.an('array').with.a.lengthOf(4);
-  })
+  });
 
   it('should return total cost of all visits', () => {
-    guest.allBookings(bookings);
+    guest.getGuestBookings(bookings);
     expect(guest.getTotalCost(guest.allVisits)).to.eql(835.78)
-  })
+  });
   
 
-  it.skip('should return cost of current visit', () => {
-    expect(guest.booking).to.eql(491.14)
-  })
+  it('should return cost of current visit', () => {
+    expect(guest.stay).to.eql(undefined)
+  });
 
+  it('should be able to get all available rooms by date', () => {
+    expect(guest.getVacantRooms("2020/02/16")).to.be.an('array').with.a.lengthOf(3)
+  });
+
+  it('should be able to filter rooms available by date by roomtype', () => {
+ 
+    expect(guest.getRoomsByRoomType('2020/02/16', 'res-suite')).to.be.an('array').with.a.lengthOf(1);
+  });
+
+  it('should return all roomsType for date if selection is not made', () => {
+    expect(guest.getRoomsByRoomType('2020/02/16')).to.be.an('array').with.a.lengthOf(3);
+  });
+
+  it('should return sorry if no rooms of that type are available', () => {
+    expect(guest.getRoomsByRoomType('2020/02/16', 'suite')).to.be.a('string');
+  });
+
+  it('should return all rooms if data isnt of correct type', () => {
+    expect(guest.getRoomsByRoomType('2020/02/16', 2)).to.be.an('array').with.a.lengthOf(3);
+  });
+
+  //Need to make all rooms booked this day 
+  it.skip('should return message to user apologizing if no bookings available', () => {
+    expect(guest.getVacantRooms('2020/03/17')).to.be.a('string').eql.to('désolé, tout est réservé pour ce jour')
+  });
 
 });

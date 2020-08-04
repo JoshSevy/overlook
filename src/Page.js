@@ -3,10 +3,9 @@ import Manager from './Manager';
 import Guest from './Guest';
 
 class Page {
-
-  changeSystemMessage(message = '') {
-    let display = document.getElementById('sign-in')
-    display.innerText = message
+  constructor() {
+    this.guest;
+    this.manager;
   }
 
   displayManager() {
@@ -18,18 +17,18 @@ class Page {
     let display = [
       'manager', 'button-logout'
     ]
-    this.hideElement(hide);
-    this.displayElement(display);
+    this.hideElements(hide);
+    this.displayElements(display);
     this.displayManagerTable(manager);
   }
 
-  displayManagerTable(manager) {
+  displayManagerTable() {
     let dailyRevenue = document.querySelector('.manage-revenue');
     let revenueHtml = `
     <h3 class="manage-title">revenue for: ${this.today()}<h3>
-    <h2 class="manage-rev">$${manager.revenueByDate(this.today())}<h2>
+    <h2 class="manage-rev">$${this.manager.revenueByDate(this.today())}<h2>
     <h3 class="manage-title"> Hotel Occupency Total:<h3>
-    <h2 class="manage-occ">${manager.percentageOccupied(this.today())} % <h2>
+    <h2 class="manage-occ">${this.manager.percentageOccupied(this.today())} % <h2>
     `
     dailyRevenue.innerHTML = revenueHtml;
   }
@@ -38,40 +37,59 @@ class Page {
     let hide = [
       'button-signin', 'manager', 'main-page', 'signin'];
     let display = ['guest', 'button-logout']
-    this.hideElement(hide);
-    this.displayElement(display);
-    this.displayGuestData(guest);
-    this.displayGuestVisits(guest);
+    this.hideElements(hide);
+    this.displayElements(display);
+    this.displayGuestData();
+    this.displayGuestVisits();
   }
 
-  displayGuestData(guest) {
+  displayGuestData() {
     const guestData = document.querySelector('.guest-manage');
     const guestManageHtml = `
     <h2 class="guest-title"> Past Visits: </h2>
     <ul class="previous-visits"></ul>
     <h2 class="guest-title">Total Cost:</h2>
-    <h2 class="guest-total">${guest.getTotalCost()}<h2>
+    <h2 class="guest-total">$${this.guest.getTotalCost()}<h2>
     `
     guestData.innerHTML = guestManageHtml;
   }
 
-  displayGuestVisits(guest) {
+  displayGuestVisits() {
     const visitList = document.querySelector('.previous-visits');
     let list = ``;
-    guest.allVisits.forEach(visit => {
-      let room = guest.getRoomInfo(visit.roomNumber);
+    this.guest.allVisits.forEach(visit => {
+      let room = this.guest.getRoomInfo(visit.roomNumber);
       list += `<li class="guest-book">${visit.date} ${room.roomType} $${room.costPerNight}</li>`
     })
     visitList.insertAdjacentHTML("afterbegin", list);
   }
 
-  displayElement(displayArray) {
+  displayVacantRooms(date, roomType) {
+    const calendar = document.querySelector('.calendar-booking');
+    calendar.setAttribute("min", this.dateCalenderFormat(this.today()))
+    const vacantRooms = document.querySelector('.vacant-rooms');
+    let list = ``;
+    let rooms = this.guest.getRoomsByRoomType(date, roomType);
+    rooms.forEach(room => {
+      list += `<button class="book-room" id="book-room" value="${room.number}">room number: ${room.number} room type: ${room.roomType} cost per night: ${room.costPerNight} </button>`
+    })
+    vacantRooms.insertAdjacentHTML("afterbegin", list);
+  }
+
+  displayHome() {
+    const display = ['main-page', 'button-signin', 'signin'];
+    const hide = ['guest', 'manager', 'button-logout'];
+    this.displayElements(display);
+    this.hideElements(hide);
+  }
+
+  displayElements(displayArray) {
     displayArray.forEach(className => {
       document.querySelector(`.${className}`).classList.remove('hidden');
     })
   }
 
-  hideElement(hideArray) {
+  hideElements(hideArray) {
     hideArray.forEach(className => {
       document.querySelector(`.${className}`).classList.add('hidden');
     })
@@ -81,28 +99,16 @@ class Page {
     let rooms = hotelData.rooms;
     let users = hotelData.users;
     let bookings = hotelData.bookings;
+    let goToPage = document.querySelector('.login-button');
     if (login.user.includes('manager')) {
-      let manager = new Manager(rooms, bookings, users);
+      this.manager = new Manager(rooms, bookings, users);
       this.displayManager();
     } else if (login.user.includes('customer')) {
-      let id = login.user.replace(/\D/g, "");
-      this.displayGuest();
-      let guest = new Guest(rooms, bookings, users[id].id, users[id].name)
-      guest.allBookings(bookings);
-    }
-  }
-
-  clearInputForms() {
-    let inputs = document.querySelectorAll('input');
-    for (var i = 0; i < inputs.length; i++) {
-      inputs[i].value = ''
-    }
-    this.dateField.classList.add('hidden')
-    const submit = document.getElementById('submit')
-    if (inputs === null) {
-      submit.innerText = `add new info`;
-      submit.id = `new-fitness-entry`;
-    }
+      let id = login.user.replace(/\D/g, "") - 1;
+      this.guest = new Guest(rooms, bookings, users[id].id, users[id].name)
+      this.guest.getGuestBookings(bookings);
+      this.displayGuest();   
+    } 
   }
 
   today() {
@@ -113,6 +119,24 @@ class Page {
 
     today = yyyy + '/' + mm + '/' + dd;
     return today;
+  }
+
+  dateJsonFormat(date) {
+    let dateFormat = date.replace('-', '/')
+    return dateFormat.replace('-', '/')
+  }
+
+  dateCalenderFormat(date) {
+    let dateFormat = date.replace('/', '-')
+    return dateFormat.replace('/', '-')
+  }
+
+  displayDateFormat(date) {
+    let dateFormat = date.split('')
+    let yyyy = dateFormat.slice(0, 4).join('');
+    let mm = dateFormat.slice(5, 7).join('');
+    let dd = dateFormat.slice(8).join('');
+    return `${mm}-${dd}-${yyyy}`;
   }
 }
 

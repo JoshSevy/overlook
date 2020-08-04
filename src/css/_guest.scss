@@ -1,50 +1,61 @@
 .guest {
   display: flex;
   justify-content: center;
-}
 
-.guest-info{
+  &-info{
   color: black;
-}
+  }
 
-.guest-header {
-  font-size: 1.5em;
-}
+  &-header {
+    font-size: 1.5em;
+  }
 
-.guest-visit {
-  font-size: 1em;
-  width: 100%;
-  border: $nav-bar solid 4px;
-}
+  &-visit {
+    width: 100%;
+    border: $nav-bar solid 4px;
+  }
 
-.guest-search {
-  font-size: 1em;
-  width: 100%;
-  border: $nav-bar solid 4px;
-}
+  &-search {
+    width: 100%;
+    border: $nav-bar solid 4px;
+  }
 
-.guest-manage {
-  border: $nav-bar solid 4px;
-}
+  &-manage {
+    border: $nav-bar solid 4px;
+  }
 
-.guest-total {
-  font-size: 1em;
+  &-total {
+    font-size: 1em;
+    text-align: center;
+  }
+
+  &-title {
+  font-size: 1.2em;
   text-align: center;
+  }
+
+  &-book {
+    border: $color-black solid 2px;
+    list-style: none;
+    text-align-last: justify;
+  }
 }
 
-.guest-title {
-font-size: 1.2em;
-text-align: center;
-}
 
-.guest-book {
-  border: $color-black solid 2px;
-  list-style: none;
-  text-align-last: justify;
-}
 
 .previous-visits {
   background-color: lightcyan;
   margin: 2em;
+}
+
+.vacant-rooms {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  & > button {
+    background-color: lightcyan;
+  }
 }
 

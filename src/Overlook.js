@@ -6,11 +6,12 @@ class Overlook {
     this.bookings = bookings;
   }
   
-  bookingsByDate(date) {
+  allBookingsByDate(date) {
     return this.bookings.filter(book => book.date === date);
   }
 
-  vacantRooms(date) {
+  getVacantRooms(date) {
+    let message = 'désolé, tout est réservé pour ce jour';
     let vacantRooms = this.rooms.reduce((vacant, room) => {
       let nonVacant = this.bookings
         .find(book => book.roomNumber === room.number 
@@ -19,7 +20,7 @@ class Overlook {
         vacant.push(room);
       return vacant
     }, []);
-    return vacantRooms;
+    return (vacantRooms.length <= 0 ? message : vacantRooms);
   }
 
   getRoomInfo(roomNumber) {

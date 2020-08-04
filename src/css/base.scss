@@ -20,10 +20,44 @@ html, body {
   margin-top: 15vh;
 }
 
+.main-img {
+  width: 100%;
+
+  & > img {
+    width: 100%;
+  }
+}
+
+.main-info {
+  width: 100%;
+
+  & > h3 {
+    font-size: 2em;
+    margin-top: 2vh;
+    text-align: center;
+    text-transform: capitalize;
+  }
+
+  & > p {
+    text-align: center;
+    font-size: 1.2em;
+    text-transform: capitalize;
+    line-height: 1.2;
+    letter-spacing: 1.1;
+    margin-top: 4vh;
+  }
+}
+
+
 
 @media screen and (max-width: 768px) {
   html, body {
-    font-size: 12px;
+    font-size: 10px;
+  }
+
+  .signin-photo {
+    visibility: hidden;
+    position: fixed;
   }
 }
 //HAMBURGER MENU
