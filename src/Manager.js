@@ -33,6 +33,10 @@ class Manager extends Overlook {
     return (occupied.length / this.rooms.length) * 100;
   }
 
+  searchGuestByName() {
+    
+  }
+
 
   // getUserInfo()
 

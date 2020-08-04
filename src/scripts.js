@@ -17,7 +17,7 @@ const startApp = async () => {
    page = new Page();
 }
 
-const links = document.getElementById('logout');
+const logout = document.getElementById('logout');
 logout.addEventListener('click', navigate);
 
 function navigate(event) {
@@ -37,8 +37,13 @@ userform.addEventListener("submit", event => {
   let password = document.getElementById('password').value;
   userData['user'] = user.toLowerCase();
   userData['password'] = password.toLowerCase();
-  validateLogin(user, password);
-  page.loginUser(userData, allData);
+
+  if (validateLogin(userData.user, userData.password)) {
+    page.loginUser(userData, allData);
+  } else {
+    console.log('add message error to form');
+  }
+  ;
 });
 
 const roomSelect = document.querySelector('.search-bookings');
@@ -55,8 +60,9 @@ roomSelect.addEventListener("submit", event => {
 
 //Would love to get into more validation - if you reach end get after it
 const validateLogin = (user, password) => {
-  if (user.includes('customer') || user.includes('manager') 
-  && password === "overlook2020") {
+  if (user.includes('customer') && password === "overlook2020") {
+    return true;
+  } else if (user.includes('manager') && password === "overlook2020"){
     return true;
   } else {
     return false;

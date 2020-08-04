@@ -22,8 +22,6 @@ describe('Page', () => {
     expect(page).to.be.an.instanceOf(Page);
   })
 
-  it
-
   it.skip('should spy on hideElement', () => {
     expect().to.have.been.called.with(page.displayGuest());
   })

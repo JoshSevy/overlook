@@ -99,6 +99,7 @@ class Page {
     let rooms = hotelData.rooms;
     let users = hotelData.users;
     let bookings = hotelData.bookings;
+    let goToPage = document.querySelector('.login-button');
     if (login.user.includes('manager')) {
       this.manager = new Manager(rooms, bookings, users);
       this.displayManager();
@@ -106,12 +107,8 @@ class Page {
       let id = login.user.replace(/\D/g, "") - 1;
       this.guest = new Guest(rooms, bookings, users[id].id, users[id].name)
       this.guest.getGuestBookings(bookings);
-      this.displayGuest();    
-    }
-  }
-
-  logoutUser() {
-
+      this.displayGuest();   
+    } 
   }
 
   today() {
