@@ -82,10 +82,6 @@ for example 'customer33'
 
 This project is a mock hotel, management, and guest portal. You are able to log in as a manager and look at current sales. As a guest you can search available rooms, make a booking. Future iterations will includ a mock ammenities section, a page that goes, into much more detail about the hotel. Future iterations on the manager side will include a much more robust back of house operations application, more details about the day to day as well as abilities to add service charges.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-
-
 <!-- ROADMAP -->
 ## Roadmap
 
