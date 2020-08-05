@@ -1,15 +1,5 @@
-//ITERATION 2 MANAGER SECTION LOGIC NEEDED
 
 import Overlook from "./Overlook";
-
-
-// Should see a dashboard page that shows
-//TOTAL ROOMS AVAILABLE for today's date
-
-//TOTAL REVENUE for today's date
-
-//PERCENTAGE fo rooms occupied for today's date
-
 
 class Manager extends Overlook {
   constructor(rooms, bookings, guests) {
@@ -33,8 +23,22 @@ class Manager extends Overlook {
     return (occupied.length / this.rooms.length) * 100;
   }
 
-  searchGuestByName() {
-    
+  searchGuestByName(name) {
+    if (typeof name === 'string') {
+      let findGuest = name.toLowerCase();
+      findGuest = this.guests
+        .find(guest => guest.name
+          .toLowerCase()
+          .includes(name));
+        
+      if (findGuest === undefined) {
+        return 'No guests match that name';
+      } else {
+        return findGuest;
+      }
+    } else {
+      return 'must be a valid name'
+    }
   }
 }
 

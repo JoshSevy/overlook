@@ -5,7 +5,7 @@ const expect = chai.expect;
 
 
 describe('Manager', function () {
-  let users, rooms, bookings, overlook, manager;
+  let users, rooms, bookings, manager;
 
   before(() => {
 
@@ -95,10 +95,7 @@ describe('Manager', function () {
     manager = new Manager(rooms, bookings, users);
 
   })
-  it.skip('should be an instance of Overlook', () => {
-    expect(overlook).to.be.an.instanceOf(Overlook);
-  });
-
+  
   it('should be an instance of Manager', () => {
     expect(manager).to.be.an.instanceOf(Manager);
   })
@@ -110,13 +107,33 @@ describe('Manager', function () {
   it('should return revenue by date', () => {
     expect(manager.revenueByDate("2020/01/10")).eql(358.4);
   })
+//Ran out of time to modify function to check date format.
+  it.skip('should return a message if date format wrong', () => {
+    expect(manager.revenueByDate("01/22/2020")).eql();
+  })
 
   it('should return hotel occupency by date', () => {
     expect(manager.percentageOccupied("2020/02/16")).to.eql(25)
   })
 
-  it.skip('should show current booking', () => {
+  it('should show current booking', () => {
+    expect(manager.searchGuestByName('lea'))
+      .to.eql({ id: 1, name: 'Leatha Ullrich' })
+  })
 
+  it('should show current booking', () => {
+    expect(manager.searchGuestByName('Mike'))
+      .to.eql('No guests match that name')
+  })
+
+  it('should show current booking', () => {
+    expect(manager.searchGuestByName(8459))
+      .to.eql('must be a valid name')
+  })
+
+  it('should show current booking', () => {
+    expect(manager.searchGuestByName(['susan']))
+      .to.eql('must be a valid name')
   })
 
 });

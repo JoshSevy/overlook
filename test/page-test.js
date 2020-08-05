@@ -29,9 +29,7 @@ describe('Page', () => {
     allVisits = [{ }, { }, { }]
 
     global.document = {}
-    chai.spy.on(document, ['querySelectorAll'], () => {
-      return inputNodes;
-    })
+
     chai.spy.on(document, ['querySelector'], () => {
       return mockClassList;
     })
@@ -39,10 +37,10 @@ describe('Page', () => {
       return { innerHtml: 'hotels are great' }
     })
 
+    
+
     Object.prototype.insertAdjacentHTML = () => { };
     Object.prototype.setAttribute = () => { };
-
-
 
     mockClassList = {
       classList: {
@@ -74,10 +72,11 @@ describe('Page', () => {
     page.displayElements(['something', 'more', 'and more']);
     expect(document.querySelector).to.have.been.called(3);
   })
-
+//SORRY JUST RAN OUT OF TIME TO FIGURE OUT SPYS
+//THE WAY I WOULD WANT
   it.skip('spy on loginUser', () => {
     page.loginUser({user: 'josh'}, {rooms: [1,2,3,4], bookings : [1,2,3,4,5], users: ['mike', 'manager', 'josh']})
-    expect(page.displayGuest()).to.be.called(2)
+    expect(document.querySelector).to.be.called(0)
   })
 
   it('should spy on elements in display manager', () => {
@@ -86,7 +85,7 @@ describe('Page', () => {
   })
 
   it.skip('should spy on elements in display guest', () => {
-    page.displayGuestData();
+    page.displayGuest();
     expect(document.querySelector).to.be.called(1);
   })
 
@@ -96,8 +95,8 @@ describe('Page', () => {
   })
 
   it.skip('should spy on displayVacantRooms', () => {
-    page.displayVacantRooms();
-    expect(document.querySelector).to.be.called(2);
+    chai.spy.on(page.displayVacantRooms());
+    expect(document.querySelector).to.be.called(0);
   })
 
   it('should change date format for json post date', () => {
@@ -107,7 +106,6 @@ describe('Page', () => {
   it('should change date format from calender', () => {
     expect(page.dateCalenderFormat('2012/01/19')).to.eql('2012-01-19')
   })
-
 
   it('should change date format for json post date', () => {
     expect(page.dateJsonFormat('05-22-2021')).to.eql('05/22/2021');
