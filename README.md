@@ -7,7 +7,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/JoshSevy/overlook">
-    <img src="images/overlook.png" alt="Logo" width="80" height="80">
+    <img src="./src/images/overlook.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">OverLook</h3>
@@ -17,10 +17,6 @@
     <a href="https://github.com/JoshSevy/overlook"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    ·
-    <a href="https://github.com/JoshSevy/overlook/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/JoshSevy/overlook/issues">Request Feature</a>
   </p>
 </p>
 
@@ -33,18 +29,17 @@
   * [Installation](#installation)
 * [Usage](#usage)
 * [Roadmap](#roadmap)
-* [Contributing](#contributing)
 * [Contact](#contact)
 
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Overlook Log in][product-screenshot1]][photo url]
+![Overlook Log in](https://media.giphy.com/media/RGjHjyzna7s9mMD9sc/giphy.gif)
 
-[![Guest Bookings][product-screenshot2]][photo url]
+![Overlook Log in](https://media.giphy.com/media/eMVCndubQb0JeRHX4k/giphy.gif)
 
-[![Guest Rooms Available][product-screenshot3]][photo url]
+![Overlook Log in](https://media.giphy.com/media/UpJzJibuf80c8f39Ii/giphy.gif)
 
 Overlook is my final Mod 2 project. I wasn't able to get everything in that I would of liked but do feel like, I also was able to focus on sharpening some skills I have been neglecting. The project is a hotel management website, you are able to interact with it as a guest, as well as on the back of house as a manager. 
 
@@ -118,43 +113,4 @@ Joshua Sevy - joshuasevy@outlook.com
 [license-url]: https://github.com/JoshSevy/overlook/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/joshua-sevy/
-[product-screenshot1]: https://giphy.com/gifs/RGjHjyzna7s9mMD9sc
-[product-screenshot2]: https://giphy.com/gifs/UpJzJibuf80c8f39Ii
-[product-screenshot3]: https://giphy.com/gifs/eMVCndubQb0JeRHX4k
-
-## How to View Your Code in Action
-
-In the terminal, run:
-
-```bash
-npm start
-```
-
-You will see a bunch of lines output to your terminal. One of those lines will be something like:
-
-```bash
-Project is running at http://localhost:8080/
-```
-
-Go to  in your browser to view your code running in the browser.
-
----
-
-## Test Files Organization
-
-Similar to feature code, your test code needs to be put in a specific place for it to run successfully.
-
-**Put all of your test files in the `test` directory.** As a convention, all test filenames should end with `-test.js`. For instance: `box-test.js`.
-
-## Running Your Tests
-
-Run your test suite using the command:
-
-```bash
-npm test
-```
-
-The test results will output to the terminal.
-
----
 
