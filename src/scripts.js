@@ -43,7 +43,6 @@ userform.addEventListener("submit", event => {
   } else {
     console.log('add message error to form');
   }
-  ;
 });
 
 const roomSelect = document.querySelector('.search-bookings');
@@ -95,7 +94,7 @@ const fetchData = async (dataSet) => {
     }
   }
   catch (e) {
-    return changeSystemMessage('Somethings Broke');
+    return console.log(dataset, 'not found');
   }
 }
 
@@ -118,7 +117,7 @@ const postBooking = (data) => {
     },
     body: JSON.stringify(data)
   }).then(() => console.log('Success!'))
-    .catch(err => console.log('error'));
+    .catch(err => console.log(error));
 }
 
 // would like to grab user directly from api during sign in STRETCH GOAL

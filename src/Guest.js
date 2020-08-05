@@ -16,7 +16,7 @@ class Guest extends Overlook {
     this.allVisits = [...allBookings];
   }
 
-// could refactor to go into parent return daily revenue and user total cost
+
   getTotalCost() {
     let total = this.allVisits.reduce((sum, cost) => {
       this.rooms.forEach(room => {

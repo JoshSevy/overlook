@@ -1,4 +1,3 @@
-
 import Manager from './Manager';
 import Guest from './Guest';
 

@@ -7,4 +7,25 @@
     visibility: hidden;
     position: fixed;
   }
+
+  .login-header {
+    font-size: 1.3rem;
+  }
+
+  .login-form {
+    padding: .5rem 0;
+  }
+
+  .button-find {
+    font-weight: 600;
+    font-size: .5rem;
+  }
+
+  .button-info {
+    @extend .button-find;
+  } 
+  
+  .button-features {
+    @extend .button-find;
+  }
 }

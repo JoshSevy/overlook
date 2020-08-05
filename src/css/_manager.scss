@@ -21,7 +21,7 @@
 }
 
 .manage-info > h2 {
-  font-size: 2.5em;
+  font-size: 2em;
   margin-bottom: 1em;
   text-transform: uppercase;
   text-decoration: underline;
@@ -30,21 +30,24 @@
 }
 
 .manage-revenue {
-  border: $color-black 3px solid;
-  height: 30vh;
-  margin: 1em;
-  padding: .5em; 
   text-align: center;
-  text-transform: uppercase;
-  width: 100%;
+  @include manager-cards;
 }
 
 .manage-guest {
-  @extend .manage-revenue;
+  @include manager-cards;
+}
+
+.manage-guest > h3 {
+  @include search-cards;
 }
 
 .manage-bookings {
-  @extend .manage-revenue;
+  @include manager-cards;
+}
+
+.manage-bookings > h3 {
+  @include search-cards;
 }
 
 .manage-occ {

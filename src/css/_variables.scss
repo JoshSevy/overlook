@@ -6,9 +6,25 @@ $color-black: #030c0a;
 $color-cyan: #e0ffff;
 $nav-bar: #47BDFF;
 
+//Styling Variables
+
 $border-blue: $nav-bar solid 4px;
 
+//Mixins
 
+@mixin manager-cards {
+  border: $color-black 3px solid;
+  height: 30vh;
+  margin: 1em;
+  padding: .5em; 
+  text-transform: uppercase;
+  width: 100%;
+}
+
+@mixin search-cards {
+  padding-bottom: 2rem;
+  font-size: .5rem;
+}
 
 //Animations
 

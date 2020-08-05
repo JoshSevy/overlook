@@ -15,12 +15,12 @@ class Manager extends Overlook {
       sum += price.costPerNight;
       return sum
     }, 0)
-    return total;
+    return total.toFixed(2);
   }
  
   percentageOccupied(date) {
     let occupied = this.allBookingsByDate(date);
-    return (occupied.length / this.rooms.length) * 100;
+    return ((occupied.length / this.rooms.length) * 100).toFixed(2);
   }
 
   searchGuestByName(name) {
