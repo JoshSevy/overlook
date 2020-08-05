@@ -9,7 +9,8 @@ import './css/base.scss';
 
 import './images/overlook.png';
 import './images/lobby-sky.jpg';
-import './images/work-center.jpg'
+import './images/work-center.jpg';
+import './images/working-room.jpg';
 
 
 

@@ -3,6 +3,7 @@
 @import 'manager';
 @import 'signin';
 @import 'guest';
+@import 'media';
 
 * {
   box-sizing: border-box;
@@ -47,61 +48,6 @@ html, body {
     margin-top: 4vh;
   }
 }
-
-
-
-@media screen and (max-width: 768px) {
-  html, body {
-    font-size: 10px;
-  }
-
-  .signin-photo {
-    visibility: hidden;
-    position: fixed;
-  }
-}
-//HAMBURGER MENU
-// /* Style the navigation menu */
-// .topnav {
-//   overflow: hidden;
-//   background-color: $color-grey;
-//   position: relative;
-// }
-
-// /* Hide the links inside the navigation menu (except for logo/home) */
-// .topnav #myLinks {
-//   display: none;
-// }
-
-// /* Style navigation menu links */
-// .topnav a {
-//   color: white;
-//   padding: 14px 16px;
-//   text-decoration: none;
-//   font-size: 17px;
-//   display: block;
-// }
-
-// /* Style the hamburger menu */
-// .topnav a.icon {
-//   background: $color-black;
-//   display: block;
-//   position: absolute;
-//   right: 0;
-//   top: 0;
-// }
-
-// /* Add a grey background color on mouse-over */
-// .topnav a:hover {
-//   background-color: $color-white;
-//   color: black;
-// }
-
-// /* Style the active link (or home/logo) */
-// .active {
-//   background-color: #4CAF50;
-//   color: white;
-// }
 
 .hidden {
   display: none;

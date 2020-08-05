@@ -1,6 +1,6 @@
 .signin {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: center;
   position: fixed;
   width: 100vw;
@@ -50,6 +50,7 @@
     height: 100%;
     padding: 2rem;
     position: relative;
+    text-transform: capitalize;
   }
 
   &-text h1 {
@@ -67,10 +68,7 @@
   }
   
   &-text a {
-    text-decoration: none;
     color:  $nav-bar;
-    justify-content: flex-end;
-    display: flex;
     font-size: 1.5rem;
     font-weight: 600;
   }
@@ -85,6 +83,10 @@
     right: 0;
     transform: rotate(0);
   }
+}
+
+.signin-send > button {
+  margin-top: 1rem;
 }
 
 .close-signin {

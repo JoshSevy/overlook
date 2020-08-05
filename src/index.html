@@ -28,8 +28,8 @@
             <h2 class="login-header">welcome to the overlook hotel</h2>
             <form class="login-form" action="reset" id="login-form" method="GET">
               <h3>overlook login</h3>
-              <label for="login">User Login:</label>
-              <input class="login-user" type="text" name="login" id="login-user" value="" required />
+              <label for="login-user">User Login:</label>
+              <input class="login-user" type="text" name="login" id="login-user" required />
               <label for="password">Password:</label>
               <input class="login-password" type="password" name="password" id="password" required />
               <article class="signin-send">
@@ -86,13 +86,10 @@
     </section>
     <section class="guest hidden">
       <section class="guest-info">
-        <h2 class="guest-header">Hello</h2>
+        <h2 class="guest-header">Hello, thank you for staying with us.</h2>
         <section>
-          <article class="guest-visit">
-            your visit:
-          </article>
           <article class="guest-search">
-            <h2 class="guest-header"></h2>
+            <h2 class="guest-header">find a room:</h2>
             <form class="search-bookings" action="" id="search-bookings">
               <label for="guest-date">Dates:</label>
               <input class="calendar-booking" type="date" id="guest-date" name="date" min="today">
@@ -106,8 +103,8 @@
               </select>
               <input type="submit" id="submit-booking">
             </form>
-            <ul class="vacant-rooms">
-            </ul>
+            <article class="vacant-rooms">
+            </article>
           </article>
           <article class="guest-manage">
             guest data:
